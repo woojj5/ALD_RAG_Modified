@@ -1,0 +1,2214 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "keywords": [
+        "ALD"
+      ],
+      "text": "ALD 공정 조건은 시간 제어보다 표면 반응 특성에 의해 결정된다."
+    },
+    {
+      "id": 2,
+      "keywords": [
+        "ALD"
+      ],
+      "text": "ALD 공정은 Precursor A와 B를 번갈아 주입해 원자층 단위로 박막을 쌓는 공정이다."
+    },
+    {
+      "id": 3,
+      "keywords": [
+        "ALD"
+      ],
+      "text": "ALD 공정은 self-limiting 메커니즘을 기반으로 하여 박막 두께를 정밀하게 제어할 수 있는 증착 기술이다."
+    },
+    {
+      "id": 4,
+      "keywords": [
+        "ALD"
+      ],
+      "text": "ALD는 Surface self-limiting 반응을 이용해 한 사이클당 일정 두께만큼만 증착된다."
+    },
+    {
+      "id": 5,
+      "keywords": [
+        "Flow"
+      ],
+      "text": "가스 Flow는 Precursor 전달 효율과 챔버 내 반응 균일도에 핵심적인 역할을 한다."
+    },
+    {
+      "id": 6,
+      "keywords": [
+        "Flow"
+      ],
+      "text": "유량 Set 대비 실제 유량 오차가 크면 MFC 이상을 의심할 수 있다."
+    },
+    {
+      "id": 7,
+      "keywords": [
+        "Flow"
+      ],
+      "text": "유량은 sccm 단위로 표시되며 가스가 흐르는 양을 의미한다."
+    },
+    {
+      "id": 8,
+      "keywords": [
+        "MFC"
+      ],
+      "text": "MFC는 가스 유량을 정밀하게 제어하는 장치이다."
+    },
+    {
+      "id": 9,
+      "keywords": [
+        "MFC"
+      ],
+      "text": "MFC는 공정 가스의 유량을 정밀하게 제어하며 실제 유량 변화는 안정적인 ALD 반응성에 직접적인 영향을 준다."
+    },
+    {
+      "id": 10,
+      "keywords": [
+        "Plasma"
+      ],
+      "text": "Plasma는 라디칼 기반 반응성을 제공하여 낮은 온도에서도 안정적인 박막 형성이 가능하게 한다."
+    },
+    {
+      "id": 11,
+      "keywords": [
+        "Precursor"
+      ],
+      "text": "Precursor A는 웨이퍼 표면에 한 층만 흡착되면 반응이 멈춘다."
+    },
+    {
+      "id": 12,
+      "keywords": [
+        "Precursor"
+      ],
+      "text": "Precursor는 기판 표면의 활성 사이트와 선택적으로 반응하여 초기 박막 형성 특성을 결정한다."
+    },
+    {
+      "id": 13,
+      "keywords": [
+        "Precursor"
+      ],
+      "text": "Precursor는 박막을 만들기 위한 원재료 기체이다."
+    },
+    {
+      "id": 14,
+      "keywords": [
+        "Pressure"
+      ],
+      "text": "챔버 Pressure는 반응 속도와 Precursor 확산 특성에 큰 영향을 미치며 공정 안정성을 좌우한다."
+    },
+    {
+      "id": 15,
+      "keywords": [
+        "Purge"
+      ],
+      "text": "Purge 단계는 챔버 내부의 잔류 반응물과 부산물을 제거하여 다음 반응이 오염 없이 진행되도록 보장한다."
+    },
+    {
+      "id": 16,
+      "keywords": [
+        "Purge"
+      ],
+      "text": "Purge는 A와 B가 공중에서 섞여 이상 반응을 일으키지 않도록 한다."
+    },
+    {
+      "id": 17,
+      "keywords": [
+        "Purge"
+      ],
+      "text": "Purge는 챔버 내부의 남아있는 기체를 제거하는 정리 단계이다."
+    },
+    {
+      "id": 18,
+      "keywords": [
+        "VG12"
+      ],
+      "text": "VG12는 공정 챔버의 실제 압력을 측정하는 진공 게이지이다."
+    },
+    {
+      "id": 19,
+      "keywords": [
+        "VG12"
+      ],
+      "text": "VG12는 메인 공정 챔버의 압력을 측정하는 센서로 overshoot 발생 여부를 정밀하게 감지한다."
+    },
+    {
+      "id": 20,
+      "keywords": [
+        "VG13"
+      ],
+      "text": "VG13은 로드락 또는 인터미디어트 챔버의 압력을 감시하며 이송 안정성에 중요한 역할을 한다."
+    },
+    {
+      "id": 21,
+      "keywords": [
+        "VG13"
+      ],
+      "text": "VG13은 로드락 또는 전단부 압력을 측정하는 센서이다."
+    },
+    {
+      "id": 22,
+      "keywords": [
+        "Valve"
+      ],
+      "text": "APC Valve는 챔버 압력을 정밀하게 제어하며 압력 안정화 속도에 직접적으로 영향을 미친다."
+    },
+    {
+      "id": 23,
+      "keywords": [
+        "Valve"
+      ],
+      "text": "Valve stuck-open 패턴은 밸브가 닫히지 않고 계속 열린 상태로 고착된 상황이다."
+    },
+    {
+      "id": 24,
+      "keywords": [
+        "로드락"
+      ],
+      "text": "로드락 챔버는 웨이퍼를 공정 챔버로 이송하기 전 진공 상태를 맞추는 단계로 오염 방지에 핵심적이다."
+    },
+    {
+      "id": 25,
+      "keywords": [
+        "로드락"
+      ],
+      "text": "로드락 챔버는 웨이퍼를 외부에서 내부로 이동시키기 위한 진공 전환 공간이다."
+    },
+    {
+      "id": 26,
+      "keywords": [
+        "압력"
+      ],
+      "text": "APC 밸브는 챔버 압력을 일정하게 유지하기 위해 열리고 닫힌다."
+    },
+    {
+      "id": 27,
+      "keywords": [
+        "압력"
+      ],
+      "text": "압력 Overshoot는 가스가 과도하게 주입되거나 APC 제어가 늦어 발생한다."
+    },
+    {
+      "id": 28,
+      "keywords": [
+        "압력"
+      ],
+      "text": "압력 제어는 ALD 사이클의 안정성에 핵심적인 요소이며 반응 속도와 라디칼 확산에 영향을 준다."
+    },
+    {
+      "id": 29,
+      "keywords": [
+        "웨이퍼"
+      ],
+      "text": "반도체 웨이퍼는 여러 공정을 반복해 회로를 형성하는 얇은 실리콘 판이다."
+    },
+    {
+      "id": 30,
+      "keywords": [
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 표면 상태는 ALD 흡착 반응의 초기 단계에 큰 영향을 주며 성장 균일성의 기반을 형성한다."
+    },
+    {
+      "id": 31,
+      "keywords": [
+        "챔버"
+      ],
+      "text": "챔버 구조는 가스 분포 균일성과 Purge 효율을 결정하며 미세 패턴 내 성장 균일도를 좌우한다."
+    },
+    {
+      "id": 32,
+      "keywords": [
+        "챔버"
+      ],
+      "text": "챔버는 반도체 공정이 실제로 일어나는 밀폐된 공간이다."
+    },
+    {
+      "id": 33,
+      "keywords": [
+        "테스트"
+      ],
+      "text": "이것은 시스템 테스트를 위한 샘플 문서입니다."
+    },
+    {
+      "id": 34,
+      "keywords": [
+        "플라즈마"
+      ],
+      "text": "플라즈마 ALD는 라디칼을 이용해 낮은 온도에서도 높은 반응성을 확보한다."
+    },
+    {
+      "id": 35,
+      "keywords": [
+        "플라즈마"
+      ],
+      "text": "플라즈마는 라디칼 생성과 표면 활성화에 직접 관여하여 저온에서도 높은 반응성을 확보한다."
+    },
+    {
+      "id": 36,
+      "keywords": [
+        "플라즈마"
+      ],
+      "text": "플라즈마를 사용하면 박막 밀도와 특성이 향상된다."
+    },
+    {
+      "id": 37,
+      "keywords": [
+        "ALD",
+        "Flow"
+      ],
+      "text": "ALD에서 Flow 안정성은 Precursor 충전 단계의 균일도를 확보하기 위해 필수적이다."
+    },
+    {
+      "id": 38,
+      "keywords": [
+        "ALD",
+        "MFC"
+      ],
+      "text": "ALD 공정에서 MFC의 응답 속도는 Precursor 주입 profile을 결정하며 압력 overshoot 발생 여부에 영향을 준다."
+    },
+    {
+      "id": 39,
+      "keywords": [
+        "ALD",
+        "Plasma"
+      ],
+      "text": "Plasma ALD는 라디칼 반응성을 활용해 thermal ALD보다 낮은 온도에서 높은 성장률을 확보한다."
+    },
+    {
+      "id": 40,
+      "keywords": [
+        "ALD",
+        "Precursor"
+      ],
+      "text": "ALD 공정에서 Precursor의 표면 흡착 특성은 self-limiting 성장 메커니즘의 핵심이며 반응 균일도를 결정한다."
+    },
+    {
+      "id": 41,
+      "keywords": [
+        "ALD",
+        "Pressure"
+      ],
+      "text": "ALD Pressure 제어는 성장률(GPC)의 일관성 확보에 중요한 변수로 작용한다."
+    },
+    {
+      "id": 42,
+      "keywords": [
+        "ALD",
+        "Purge"
+      ],
+      "text": "ALD 공정의 Purge는 잔여 가스를 완전히 제거하여 반응 간 중첩을 방지함으로써 공정 반복성을 확보한다."
+    },
+    {
+      "id": 43,
+      "keywords": [
+        "MFC",
+        "Flow"
+      ],
+      "text": "MFC는 설정된 Flow 값에 도달하기까지의 응답 속도(response time)가 빠를수록 ALD 공정 내 압력 안정화가 용이해진다."
+    },
+    {
+      "id": 44,
+      "keywords": [
+        "Plasma",
+        "Flow"
+      ],
+      "text": "Plasma 반응 시 Flow 안정성은 라디칼 생성량을 일정하게 유지하는 데 필요하다."
+    },
+    {
+      "id": 45,
+      "keywords": [
+        "Precursor",
+        "Flow"
+      ],
+      "text": "Precursor Flow가 불안정하면 표면 포화가 제대로 이루어지지 않아 성장률 변동이 발생한다."
+    },
+    {
+      "id": 46,
+      "keywords": [
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Flow가 급격하게 증가하면 Pressure overshoot가 발생하여 Precursor 흡착 균일도가 저하될 수 있다."
+    },
+    {
+      "id": 47,
+      "keywords": [
+        "Purge",
+        "Flow"
+      ],
+      "text": "효율적인 Purge Flow는 챔버 내 데드존(dead-zone)을 최소화하여 잔류 가스 제거 품질을 높인다."
+    },
+    {
+      "id": 48,
+      "keywords": [
+        "Plasma",
+        "MFC"
+      ],
+      "text": "Plasma 공정에서 MFC Flow 변동은 라디칼 밀도 변화를 초래하여 막 조성 균일도에 영향을 준다."
+    },
+    {
+      "id": 49,
+      "keywords": [
+        "Precursor",
+        "MFC"
+      ],
+      "text": "Precursor 공급을 위한 MFC의 안정성은 기화 효율 및 챔버 내 전달 농도에 직접적인 영향을 준다."
+    },
+    {
+      "id": 50,
+      "keywords": [
+        "MFC",
+        "Pressure"
+      ],
+      "text": "MFC 오작동으로 유량이 불안정하면 챔버 Pressure 패턴이 흔들리며 성장률(GPC) 변동의 주요 원인이 된다."
+    },
+    {
+      "id": 51,
+      "keywords": [
+        "Purge",
+        "MFC"
+      ],
+      "text": "Purge 단계의 MFC 유량 제어가 느리면 잔여 가스 제거 효율이 떨어져 공정 repeatability가 낮아진다."
+    },
+    {
+      "id": 52,
+      "keywords": [
+        "Precursor",
+        "Plasma"
+      ],
+      "text": "Plasma는 Precursor 분해 경로를 활성화하여 더 높은 반응성을 제공하고 박막 조성을 세밀하게 제어할 수 있게 한다."
+    },
+    {
+      "id": 53,
+      "keywords": [
+        "Plasma",
+        "Pressure"
+      ],
+      "text": "Plasma Pressure 제어는 전자 밀도와 라디칼 활성도를 결정하여 반응성에 직접적인 영향을 준다."
+    },
+    {
+      "id": 54,
+      "keywords": [
+        "Purge",
+        "Plasma"
+      ],
+      "text": "Purge 후 Plasma가 적용되면 표면의 잔여 불순물을 제거하여 다음 사이클의 반응성을 향상시킨다."
+    },
+    {
+      "id": 55,
+      "keywords": [
+        "Precursor",
+        "Pressure"
+      ],
+      "text": "Precursor 주입 시 Pressure overshoot는 주입 속도가 지나치게 빠르거나 밸브 지연으로 인해 발생할 수 있다."
+    },
+    {
+      "id": 56,
+      "keywords": [
+        "Precursor",
+        "Purge"
+      ],
+      "text": "Precursor 반응 후 Purge가 불충분하면 잔류 Precursor가 다음 반응 단계에서 원치 않는 CVD 반응을 유발할 수 있다."
+    },
+    {
+      "id": 57,
+      "keywords": [
+        "Purge",
+        "Pressure"
+      ],
+      "text": "Purge 압력이 낮으면 배기 효율이 떨어져 Precursor 중첩 반응 가능성이 증가한다."
+    },
+    {
+      "id": 58,
+      "keywords": [
+        "Valve",
+        "VG12"
+      ],
+      "text": "APC Valve 개도 변화에 즉각 반응하지 않는 VG12 센서는 압력 제어 tuning 오차를 유발한다."
+    },
+    {
+      "id": 59,
+      "keywords": [
+        "압력",
+        "VG12"
+      ],
+      "text": "VG12 센서 감도 저하는 압력 제어 루프 오차를 증가시켜 ALD 사이클 재현성을 낮춘다."
+    },
+    {
+      "id": 60,
+      "keywords": [
+        "VG12",
+        "압력"
+      ],
+      "text": "VG12 압력 센서 drift는 precursor 주입 타이밍 오류를 증가시켜 성장률 변동을 초래한다."
+    },
+    {
+      "id": 61,
+      "keywords": [
+        "웨이퍼",
+        "VG12"
+      ],
+      "text": "웨이퍼 로딩 직후 VG12 압력 상승은 챔버 내부 배기 효율이 낮아졌음을 의미할 수 있다."
+    },
+    {
+      "id": 62,
+      "keywords": [
+        "챔버",
+        "VG12"
+      ],
+      "text": "챔버 압력 변화에 따라 VG12 피드백 응답이 달라지며 이는 공정 안정성 판단 지표로 사용된다."
+    },
+    {
+      "id": 63,
+      "keywords": [
+        "플라즈마",
+        "VG12"
+      ],
+      "text": "VG12 압력 값이 불안정하면 플라즈마 라디칼 농도가 변동하여 박막 조성이 달라질 위험이 있다."
+    },
+    {
+      "id": 64,
+      "keywords": [
+        "Valve",
+        "VG13"
+      ],
+      "text": "VG13 압력 피드백이 없으면 로드락 Valve 제어가 불안정해져 이송 주기가 흔들릴 수 있다."
+    },
+    {
+      "id": 65,
+      "keywords": [
+        "VG13",
+        "로드락"
+      ],
+      "text": "VG13 압력이 기준보다 높게 유지되면 로드락에서 웨이퍼 이송이 지연되거나 진공 재펌프 시간이 증가한다."
+    },
+    {
+      "id": 66,
+      "keywords": [
+        "압력",
+        "VG13"
+      ],
+      "text": "VG13가 기준 압력을 유지하지 못하면 웨이퍼 로딩 시 챔버 간 압력 쇼크가 생길 수 있다."
+    },
+    {
+      "id": 67,
+      "keywords": [
+        "웨이퍼",
+        "VG13"
+      ],
+      "text": "VG13은 웨이퍼 인입 시 로드락 내부 압력 안정화를 감지하여 transfer timing 오류를 방지한다."
+    },
+    {
+      "id": 68,
+      "keywords": [
+        "챔버",
+        "VG13"
+      ],
+      "text": "VG13 모니터링은 로드락-메인 챔버 사이의 진공 일관성을 유지하는 데 필수적이다."
+    },
+    {
+      "id": 69,
+      "keywords": [
+        "플라즈마",
+        "VG13"
+      ],
+      "text": "VG13 압력 저하는 플라즈마 챔버 간 누설 가능성을 시사하며 반응 효율 저하로 이어질 수 있다."
+    },
+    {
+      "id": 70,
+      "keywords": [
+        "Valve",
+        "로드락"
+      ],
+      "text": "로드락 Valve의 개도 속도가 느리면 웨이퍼 진공 수렴 시간이 증가해 공정 대기 시간이 길어진다."
+    },
+    {
+      "id": 71,
+      "keywords": [
+        "압력",
+        "Valve"
+      ],
+      "text": "APC Valve의 제어 정확도는 압력 overshoot 발생 빈도와 성장 프로파일 안정성에 결정적이다."
+    },
+    {
+      "id": 72,
+      "keywords": [
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "Valve 튜닝이 잘못되면 웨이퍼 로딩 후 초기 압력 수렴이 느려져 공정 타이밍 오차가 발생한다."
+    },
+    {
+      "id": 73,
+      "keywords": [
+        "챔버",
+        "Valve"
+      ],
+      "text": "챔버 벽면 오염이 증가하면 Valve 제어가 동일하더라도 압력 반응 속도가 느려진다."
+    },
+    {
+      "id": 74,
+      "keywords": [
+        "플라즈마",
+        "Valve"
+      ],
+      "text": "플라즈마 공정에서 Valve 개도율 변동은 압력 불안정성을 유발하여 라디칼 생성량 변화를 초래한다."
+    },
+    {
+      "id": 75,
+      "keywords": [
+        "압력",
+        "로드락"
+      ],
+      "text": "로드락 챔버 압력 평형 속도는 웨이퍼 이동 시간과 공정 스루풋에 직접적으로 영향을 준다."
+    },
+    {
+      "id": 76,
+      "keywords": [
+        "웨이퍼",
+        "로드락"
+      ],
+      "text": "웨이퍼는 로드락에서 초기 outgassing이 발생할 수 있으며 이는 메인 챔버 오염을 증가시킬 수 있다."
+    },
+    {
+      "id": 77,
+      "keywords": [
+        "챔버",
+        "로드락"
+      ],
+      "text": "로드락과 메인 챔버 간 압력 차이가 크면 웨이퍼 인입 시 파티클 유입 가능성이 높아진다."
+    },
+    {
+      "id": 78,
+      "keywords": [
+        "플라즈마",
+        "로드락"
+      ],
+      "text": "플라즈마 프리커서 공정 전 로드락 압력이 불안정하면 웨이퍼 표면에 비의도적 흡착이 발생할 수 있다."
+    },
+    {
+      "id": 79,
+      "keywords": [
+        "압력",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 패턴 구조가 깊을수록 압력 조건에 민감해져 precursor 침투 효율이 달라진다."
+    },
+    {
+      "id": 80,
+      "keywords": [
+        "압력",
+        "챔버"
+      ],
+      "text": "챔버 내부 압력 안정화 시간은 공정 반복성(repeatability)과 박막 성장률 균일성에 직접적 영향을 준다."
+    },
+    {
+      "id": 81,
+      "keywords": [
+        "플라즈마",
+        "압력"
+      ],
+      "text": "플라즈마 ALD에서 압력 상승은 라디칼의 mean free path를 줄여 반응 균일도를 감소시킬 수 있다."
+    },
+    {
+      "id": 82,
+      "keywords": [
+        "챔버",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 위치에 따른 챔버 내부 흐름 분포 차이는 성장 두께 비균일도를 유발할 수 있다."
+    },
+    {
+      "id": 83,
+      "keywords": [
+        "플라즈마",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 표면이 비활성 상태이면 플라즈마 라디칼이 충분히 반응하지 못해 ALD 성장률이 감소한다."
+    },
+    {
+      "id": 84,
+      "keywords": [
+        "플라즈마",
+        "챔버"
+      ],
+      "text": "플라즈마 균일도는 챔버 구조와 전극 배치에 크게 의존하며 성장 두께 분포의 주요 원인이 된다."
+    },
+    {
+      "id": 85,
+      "keywords": [
+        "ALD",
+        "MFC",
+        "Flow"
+      ],
+      "text": "ALD 공정에서 MFC Flow 튜닝은 챔버 압력 안정화 속도와 Precursor 포화 효율을 결정한다."
+    },
+    {
+      "id": 86,
+      "keywords": [
+        "ALD",
+        "MFC",
+        "Flow"
+      ],
+      "text": "MFC가 안정적인 Flow를 유지하지 못하면 ALD 사이클마다 유효 Precursor 양이 달라져 두께 repeatability가 나빠진다."
+    },
+    {
+      "id": 87,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "Flow"
+      ],
+      "text": "Plasma 모드에서는 Flow 변화가 라디칼 생성 속도와 전자 밀도에 직접적인 영향을 준다."
+    },
+    {
+      "id": 88,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "Flow"
+      ],
+      "text": "Plasma에서 Flow가 증가하면 mean free path가 짧아져 이온 충돌 빈도가 증가하고 표면 반응이 변화한다."
+    },
+    {
+      "id": 89,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Flow"
+      ],
+      "text": "Precursor Flow가 부족하면 포화 흡착이 이루어지지 않아 self-limiting ALD의 장점이 사라지게 된다."
+    },
+    {
+      "id": 90,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Flow"
+      ],
+      "text": "Precursor Flow가 불안정하면 표면 포화가 일정하게 유지되지 않아 ALD 특유의 self-limiting 반응이 흐려진다."
+    },
+    {
+      "id": 91,
+      "keywords": [
+        "ALD",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Flow와 Pressure는 ALD 반응 속도를 결정하는 주요 변수로, 두 값의 연동 제어가 필수적이다."
+    },
+    {
+      "id": 92,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Flow"
+      ],
+      "text": "Purge Flow가 최적값보다 낮으면 데드존에서 잔류 가스가 남아 성장 두께 균일도를 해친다."
+    },
+    {
+      "id": 93,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Flow"
+      ],
+      "text": "Purge Flow는 잔류 Precursor 제거 속도를 결정하며, 최적 Flow가 유지되지 않으면 undesired CVD 반응이 발생할 수 있다."
+    },
+    {
+      "id": 94,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "MFC"
+      ],
+      "text": "Plasma ALD에서 MFC 흐름 안정성은 라디칼 밀도 균일도와 박막 조성 제어에 매우 중요한 요소다."
+    },
+    {
+      "id": 95,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "MFC"
+      ],
+      "text": "Plasma에서 MFC 제어 불안정은 라디칼 생성량 변동을 유발하며, 결국 박막의 조성·밀도 변화를 일으킨다."
+    },
+    {
+      "id": 96,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "MFC"
+      ],
+      "text": "ALD Precursor 공급을 담당하는 MFC의 선형성·응답 속도는 cycle 간 두께 재현성에 직접적으로 영향을 미친다."
+    },
+    {
+      "id": 97,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "MFC"
+      ],
+      "text": "ALD에서 Precursor 공급용 MFC의 정확도는 챔버 내 분압을 결정하며 반응 포화 여부에 직접적으로 영향을 준다."
+    },
+    {
+      "id": 98,
+      "keywords": [
+        "ALD",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "MFC 유량 변동이 크면 ALD 압력 패턴이 흐트러져 cycle 간 반응 재현성이 크게 떨어진다."
+    },
+    {
+      "id": 99,
+      "keywords": [
+        "ALD",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "MFC 제어 불량은 Pressure overshoot 또는 undershoot로 연결되며 이는 ALD 프로세스 타이밍을 무너뜨리는 핵심 요인이다."
+    },
+    {
+      "id": 100,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "MFC"
+      ],
+      "text": "ALD Purge 단계에서 MFC의 배기 유량 반응성이 느리면 cycle 간 반복성이 크게 떨어진다."
+    },
+    {
+      "id": 101,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "MFC"
+      ],
+      "text": "ALD Purge 유량을 제어하는 MFC의 응답 지연은 cycle time 증가와 성장률 변동의 주요 원인이 된다."
+    },
+    {
+      "id": 102,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Plasma"
+      ],
+      "text": "Plasma ALD에서는 Precursor 표면 반응 후 라디칼 활성화가 추가되어 낮은 온도에서도 높은 반응율을 구현한다."
+    },
+    {
+      "id": 103,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "Pressure"
+      ],
+      "text": "Plasma Pressure 조건은 sheath 전계 형성과 이온 충돌 에너지에 영향을 주어 박막 구조 품질을 좌우한다."
+    },
+    {
+      "id": 104,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "Pressure"
+      ],
+      "text": "Plasma Pressure가 높아지면 라디칼 수명이 짧아지고 표면 도달량이 줄어 반응 균일도가 저하된다."
+    },
+    {
+      "id": 105,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Plasma"
+      ],
+      "text": "Plasma ALD Purge는 라디칼 제거와 표면 안정화를 동시에 수행하며, Purge 품질 저하는 즉시 조성 불균일로 이어진다."
+    },
+    {
+      "id": 106,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Plasma"
+      ],
+      "text": "Plasma ALD에서는 Purge가 불완전하면 라디칼과 잔류 Precursor가 예상치 못한 side-reaction을 발생시킬 수 있다."
+    },
+    {
+      "id": 107,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Pressure"
+      ],
+      "text": "ALD에서 Precursor 분압이 낮으면 반응성이 떨어지고, 너무 높으면 표면 흡착이 과포화되어 contamination 위험이 증가한다."
+    },
+    {
+      "id": 108,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Pressure"
+      ],
+      "text": "Precursor 주입 순간 Pressure 상승 패턴은 라인 오염 여부나 기화 효율 확인에 중요한 진단 지표다."
+    },
+    {
+      "id": 109,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Purge"
+      ],
+      "text": "ALD 사이클에서 Precursor 주입 후 Purge가 충분히 수행되지 않으면 self-limiting 반응 조건이 무너져 성장률 일관성이 떨어진다."
+    },
+    {
+      "id": 110,
+      "keywords": [
+        "ALD",
+        "Precursor",
+        "Purge"
+      ],
+      "text": "ALD의 기본 구조는 Precursor 주입과 Purge 반복이며, 이 두 단계의 정밀한 시간·유량 제어가 박막 품질의 핵심이다."
+    },
+    {
+      "id": 111,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Pressure"
+      ],
+      "text": "Purge Pressure가 과도하게 낮으면 히스토리 의존성이 생겨 사이클 간 표면 조건이 일정하게 유지되지 않는다."
+    },
+    {
+      "id": 112,
+      "keywords": [
+        "ALD",
+        "Purge",
+        "Pressure"
+      ],
+      "text": "Purge 중 Pressure 변동이 크면 챔버 내 잔여 반응물이 완전히 제거되지 않았다는 신호일 가능성이 높다."
+    },
+    {
+      "id": 113,
+      "keywords": [
+        "Plasma",
+        "MFC",
+        "Flow"
+      ],
+      "text": "Plasma 반응 중 MFC Flow의 미세한 변화도 전자밀도 변화를 유발하여 박막 성장률에 민감하게 작용한다."
+    },
+    {
+      "id": 114,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "Flow"
+      ],
+      "text": "Plasma와 함께 사용할 때 Precursor Flow는 분해 경로 및 라디칼 반응 비율에 영향을 준다."
+    },
+    {
+      "id": 115,
+      "keywords": [
+        "Purge",
+        "Plasma",
+        "Flow"
+      ],
+      "text": "Purge Flow가 일정하지 않으면 Plasma 라디칼과 잔류 Precursor가 반응하여 박막 내 불순물이 증가한다."
+    },
+    {
+      "id": 116,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "Flow"
+      ],
+      "text": "Purge Flow가 낮을 경우 Precursor 분자들이 챔버 벽면에 남아 contamination을 유발한다."
+    },
+    {
+      "id": 117,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "MFC"
+      ],
+      "text": "Precursor 공급 MFC의 안정성은 Plasma 반응 중 생성되는 라디칼 농도 균일성에도 영향을 준다."
+    },
+    {
+      "id": 118,
+      "keywords": [
+        "Plasma",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "Plasma 조건에서 Pressure가 흔들리면 라디칼 생성 효율이 떨어지고 표면 활성화가 일정하게 유지되지 않는다."
+    },
+    {
+      "id": 119,
+      "keywords": [
+        "Purge",
+        "Plasma",
+        "MFC"
+      ],
+      "text": "Plasma 공정에서 Purge 중 MFC 유량이 흔들리면 라디칼과 잔류 가스가 혼합되어 비의도적 박막 조성이 형성될 수 있다."
+    },
+    {
+      "id": 120,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "MFC"
+      ],
+      "text": "Purge 단계의 MFC 제어가 불안정하면 Precursor 제거 효율이 떨어져 후속 반응에서 CVD 성분이 발생한다."
+    },
+    {
+      "id": 121,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "Pressure"
+      ],
+      "text": "Plasma 조건의 Pressure는 Precursor의 물리적 흡착 상태와 분해 반응의 활성화를 동시에 조절한다."
+    },
+    {
+      "id": 122,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "Plasma"
+      ],
+      "text": "Precursor 반응 잔여물이 Purge에서 충분히 제거되지 않으면 Plasma와 반응해 예기치 않은 박막 화학 조성이 나타날 수 있다."
+    },
+    {
+      "id": 123,
+      "keywords": [
+        "Purge",
+        "Plasma",
+        "Pressure"
+      ],
+      "text": "Purge 단계의 Pressure가 안정되지 않으면 Plasma의 이온 에너지가 변동하며 표면 반응 일관성이 무너진다."
+    },
+    {
+      "id": 124,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "Pressure"
+      ],
+      "text": "Purge Pressure가 낮으면 잔류 Precursor가 완전히 제거되지 않아 반응 중첩 문제가 발생한다."
+    },
+    {
+      "id": 125,
+      "keywords": [
+        "로드락",
+        "VG12",
+        "VG13"
+      ],
+      "text": "VG12와 VG13의 압력 차이가 크면 로드락과 메인 챔버 사이의 누설 여부를 판단할 수 있다."
+    },
+    {
+      "id": 126,
+      "keywords": [
+        "VG12",
+        "VG13",
+        "웨이퍼"
+      ],
+      "text": "VG12와 VG13의 압력 차이는 웨이퍼 입출구의 진공 안정성을 판단하는 핵심 지표다."
+    },
+    {
+      "id": 127,
+      "keywords": [
+        "VG12",
+        "VG13",
+        "챔버"
+      ],
+      "text": "VG12와 VG13 압력 차이는 챔버 내부의 미세 누설 여부를 판단하는 중요한 인자로 활용된다."
+    },
+    {
+      "id": 128,
+      "keywords": [
+        "VG12",
+        "로드락",
+        "Valve"
+      ],
+      "text": "VG12 피드백 기반 Valve 제어가 느리면 로드락 진공 형성이 지연되어 throughput이 저하된다."
+    },
+    {
+      "id": 129,
+      "keywords": [
+        "압력",
+        "VG12",
+        "Valve"
+      ],
+      "text": "VG12의 장기적인 drift는 Valve 압력 제어 알고리즘의 보정 기준을 흔들어 공정 재현성을 해친다."
+    },
+    {
+      "id": 130,
+      "keywords": [
+        "VG12",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "VG12 압력에 따른 Valve 자동 보정 기능은 웨이퍼마다 일정한 초기 진공 조건을 유지하는 데 필수다."
+    },
+    {
+      "id": 131,
+      "keywords": [
+        "Valve",
+        "VG12",
+        "웨이퍼"
+      ],
+      "text": "Valve 응답 지연은 VG12 압력 제어 불안정을 야기해 웨이퍼 반응 초기 조건을 망가뜨린다."
+    },
+    {
+      "id": 132,
+      "keywords": [
+        "챔버",
+        "Valve",
+        "VG12"
+      ],
+      "text": "VG12와 Valve 제어가 동기화되지 않으면 챔버 압력 조정 속도가 느려져 반복 공정 안정성이 낮아진다."
+    },
+    {
+      "id": 133,
+      "keywords": [
+        "VG12",
+        "플라즈마",
+        "Valve"
+      ],
+      "text": "VG12 압력 변화가 크면 Valve 보정 루프가 과도하게 작동해 플라즈마 안정 구간이 길어진다."
+    },
+    {
+      "id": 134,
+      "keywords": [
+        "플라즈마",
+        "VG12",
+        "Valve"
+      ],
+      "text": "플라즈마 점화 시 VG12 압력 신호가 흔들리면 Valve 개도 제어 루프가 불안정해져 플라즈마 유지가 어려울 수 있다."
+    },
+    {
+      "id": 135,
+      "keywords": [
+        "VG12",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "VG12 압력이 로드락 압력과 일정하게 맞지 않으면 웨이퍼 인입 시 공정 오염 가능성이 높아진다."
+    },
+    {
+      "id": 136,
+      "keywords": [
+        "VG12",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "VG12가 설정 압력을 유지하지 못하면 웨이퍼 인입 시 챔버 내부 반응 시작점이 매번 달라진다."
+    },
+    {
+      "id": 137,
+      "keywords": [
+        "로드락",
+        "VG12",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 로딩 시 VG12 압력이 target보다 높으면 로드락 진공 형성 시간이 지연된다."
+    },
+    {
+      "id": 138,
+      "keywords": [
+        "압력",
+        "VG12",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 로딩 직후 VG12 압력 패턴이 비정상적이면 챔버 기밀 저하나 Valve 누설을 의심해야 한다."
+    },
+    {
+      "id": 139,
+      "keywords": [
+        "압력",
+        "VG12",
+        "챔버"
+      ],
+      "text": "VG12 압력의 순간적인 dip은 챔버 내 purge-flow 균일성을 무너뜨릴 수 있다."
+    },
+    {
+      "id": 140,
+      "keywords": [
+        "압력",
+        "챔버",
+        "VG12"
+      ],
+      "text": "VG12는 챔버 압력 안정화 추세를 가장 빠르게 반영하기 때문에 precursor 주입 타이밍 결정에 중요하게 사용된다."
+    },
+    {
+      "id": 141,
+      "keywords": [
+        "압력",
+        "챔버",
+        "VG12"
+      ],
+      "text": "챔버 운전 중 VG12 센서 drift가 발생하면 압력 제어 루프가 오작동해 ALD 사이클 안정성이 떨어진다."
+    },
+    {
+      "id": 142,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "VG12"
+      ],
+      "text": "플라즈마 점화 직후 VG12 압력이 순간적으로 흔들리면 라디칼 밀도 변화로 막 조성 균일성이 떨어질 가능성이 높다."
+    },
+    {
+      "id": 143,
+      "keywords": [
+        "챔버",
+        "VG12",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 투입 후 VG12 압력 회복 시간이 길어지면 챔버 내부 dead-zone에 가스 잔류가 생길 가능성이 있다."
+    },
+    {
+      "id": 144,
+      "keywords": [
+        "플라즈마",
+        "VG12",
+        "웨이퍼"
+      ],
+      "text": "VG12 압력 안정도가 떨어지면 플라즈마 라디칼 도달량이 웨이퍼 위치에 따라 달라질 수 있다."
+    },
+    {
+      "id": 145,
+      "keywords": [
+        "VG12",
+        "플라즈마",
+        "웨이퍼"
+      ],
+      "text": "VG12 압력이 설정값보다 높으면 플라즈마 라디칼이 웨이퍼 표면에 도달하는 플럭스가 감소할 수 있다."
+    },
+    {
+      "id": 146,
+      "keywords": [
+        "플라즈마",
+        "VG12",
+        "챔버"
+      ],
+      "text": "플라즈마 구동 시 VG12 압력 변동은 챔버 내 라디칼 밀도 불균일의 주요 원인이 된다."
+    },
+    {
+      "id": 147,
+      "keywords": [
+        "챔버",
+        "VG12",
+        "플라즈마"
+      ],
+      "text": "플라즈마 점화 직전 VG12 압력이 안정되지 않으면 챔버 내부 라디칼 생성 시점이 흔들릴 수 있다."
+    },
+    {
+      "id": 148,
+      "keywords": [
+        "VG13",
+        "로드락",
+        "Valve"
+      ],
+      "text": "로드락 Valve 개도율이 VG13 압력 패턴과 맞지 않으면 내부 배기 효율이 떨어진다."
+    },
+    {
+      "id": 149,
+      "keywords": [
+        "VG13",
+        "로드락",
+        "Valve"
+      ],
+      "text": "로드락 기준 압력을 유지하기 위해 VG13 피드백을 바탕으로 Valve 개도율을 미세 조정한다."
+    },
+    {
+      "id": 150,
+      "keywords": [
+        "압력",
+        "VG13",
+        "Valve"
+      ],
+      "text": "VG13 압력 신호의 노이즈는 Valve 개도율 변동을 일으켜 챔버 내 유량 균일성을 떨어뜨린다."
+    },
+    {
+      "id": 151,
+      "keywords": [
+        "Valve",
+        "VG13",
+        "웨이퍼"
+      ],
+      "text": "VG13 기반 Valve 제어가 느리면 웨이퍼 위치에 따른 압력 편차가 증가한다."
+    },
+    {
+      "id": 152,
+      "keywords": [
+        "VG13",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "VG13 피드백 기반 Valve 제어가 느려지면 웨이퍼 공정 사이클 간 압력 재현성이 떨어진다."
+    },
+    {
+      "id": 153,
+      "keywords": [
+        "챔버",
+        "Valve",
+        "VG13"
+      ],
+      "text": "VG13 신호 노이즈가 심할 경우 Valve 개도율이 불규칙해져 챔버 진공 품질이 불안정해진다."
+    },
+    {
+      "id": 154,
+      "keywords": [
+        "VG13",
+        "플라즈마",
+        "Valve"
+      ],
+      "text": "VG13 압력 drift는 Valve 제어 oscillation을 유발해 플라즈마 균일도를 떨어뜨린다."
+    },
+    {
+      "id": 155,
+      "keywords": [
+        "압력",
+        "VG13",
+        "로드락"
+      ],
+      "text": "로드락에서 VG13 압력이 흔들리면 웨이퍼 이송 시 압력 충격이 발생하여 공정 초반 반응 안정성이 떨어진다."
+    },
+    {
+      "id": 156,
+      "keywords": [
+        "VG13",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "VG13 압력 drift는 웨이퍼 언로드 타이밍에 영향을 주어 공정 연속성에 문제를 일으킬 수 있다."
+    },
+    {
+      "id": 157,
+      "keywords": [
+        "로드락",
+        "VG13",
+        "웨이퍼"
+      ],
+      "text": "VG13 압력이 낮게 유지되면 웨이퍼 언로드 시 챔버-로드락 간 압력 균형이 무너질 수 있다."
+    },
+    {
+      "id": 158,
+      "keywords": [
+        "플라즈마",
+        "VG13",
+        "로드락"
+      ],
+      "text": "플라즈마 공정 후 웨이퍼 언로드 과정에서 VG13 압력이 로드락과 맞지 않으면 이온 잔류에 의한 오염 위험이 증가한다."
+    },
+    {
+      "id": 159,
+      "keywords": [
+        "VG13",
+        "웨이퍼",
+        "압력"
+      ],
+      "text": "웨이퍼 표면 온도 변화는 VG13이 관측하는 압력 패턴에 영향을 주어 공정 초기 균일성에 간접적으로 작용한다."
+    },
+    {
+      "id": 160,
+      "keywords": [
+        "압력",
+        "챔버",
+        "VG13"
+      ],
+      "text": "VG13 압력 피드백이 불안정하면 챔버 내부의 미세 압력 조정이 지연되어 반응 조건 재현성이 낮아진다."
+    },
+    {
+      "id": 161,
+      "keywords": [
+        "압력",
+        "VG13",
+        "챔버"
+      ],
+      "text": "VG13 압력이 미세하게 흔들리면 APC Valve가 과도하게 보정 동작을 수행해 압력 재현성이 떨어진다."
+    },
+    {
+      "id": 162,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "VG13"
+      ],
+      "text": "VG13 압력 피드백이 늦게 반영되면 플라즈마 유지 압력이 흔들려 ion energy 제어가 어려워진다."
+    },
+    {
+      "id": 163,
+      "keywords": [
+        "챔버",
+        "VG13",
+        "웨이퍼"
+      ],
+      "text": "VG13 압력 안정성은 챔버 내 실시간 반응 조건 재현성을 확인하는 중요한 지표로 사용된다."
+    },
+    {
+      "id": 164,
+      "keywords": [
+        "VG13",
+        "플라즈마",
+        "웨이퍼"
+      ],
+      "text": "VG13의 배기 속도가 느리면 플라즈마 반응 부산물이 웨이퍼 표면에 과다 잔류할 수 있다."
+    },
+    {
+      "id": 165,
+      "keywords": [
+        "챔버",
+        "VG13",
+        "플라즈마"
+      ],
+      "text": "VG13 압력 불안정은 플라즈마 전극 간의 전위차를 달라지게 해 반응성 편차를 일으킬 수 있다."
+    },
+    {
+      "id": 166,
+      "keywords": [
+        "플라즈마",
+        "VG13",
+        "챔버"
+      ],
+      "text": "VG13 압력 지연은 플라즈마 안정 구간 확보가 늦어져 초기 성장률 오차를 만들 수 있다."
+    },
+    {
+      "id": 167,
+      "keywords": [
+        "압력",
+        "로드락",
+        "Valve"
+      ],
+      "text": "로드락 Valve 누설이 존재하면 압력 안정 시간이 길어지고 전체 사이클 타임이 증가한다."
+    },
+    {
+      "id": 168,
+      "keywords": [
+        "로드락",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "로드락 Valve 누설이 존재하면 웨이퍼 로딩 시 챔버 내부 압력 회복이 늦어진다."
+    },
+    {
+      "id": 169,
+      "keywords": [
+        "로드락",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "로드락 Valve의 leakage는 웨이퍼 투입 시 압력 안정 시간을 늘려 전체 throughput에 영향을 준다."
+    },
+    {
+      "id": 170,
+      "keywords": [
+        "로드락",
+        "웨이퍼",
+        "Valve"
+      ],
+      "text": "로드락 Valve의 기밀성이 떨어지면 웨이퍼 로딩 중 압력 변화가 발생하여 ALD 컨디션 재현성이 악화된다."
+    },
+    {
+      "id": 171,
+      "keywords": [
+        "챔버",
+        "Valve",
+        "로드락"
+      ],
+      "text": "로드락 Valve 누설은 챔버 압력 회복 속도를 저하시켜 전체 cycle time 증가로 이어진다."
+    },
+    {
+      "id": 172,
+      "keywords": [
+        "챔버",
+        "로드락",
+        "Valve"
+      ],
+      "text": "로드락과 챔버의 Valve 조정이 일치하지 않으면 웨이퍼 핸들링 중 압력 충격이 발생한다."
+    },
+    {
+      "id": 173,
+      "keywords": [
+        "플라즈마",
+        "로드락",
+        "Valve"
+      ],
+      "text": "로드락 Valve 응답 속도가 느리면 플라즈마 점화 전 챔버 전처리 조건을 일정하게 맞추기 어렵다."
+    },
+    {
+      "id": 174,
+      "keywords": [
+        "Valve",
+        "압력",
+        "웨이퍼"
+      ],
+      "text": "Valve overshoot는 웨이퍼 표면 반응 중 압력 spike를 발생시켜 조성 불균일을 유발한다."
+    },
+    {
+      "id": 175,
+      "keywords": [
+        "압력",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 온도 변화는 압력 응답성을 바꿀 수 있어 Valve 제어 정밀도 확보가 필수적이다."
+    },
+    {
+      "id": 176,
+      "keywords": [
+        "Valve",
+        "웨이퍼",
+        "압력"
+      ],
+      "text": "웨이퍼가 챔버에 투입되는 순간 Valve 압력 보정이 제때 이루어지지 않으면 초기 반응성이 흔들릴 수 있다."
+    },
+    {
+      "id": 177,
+      "keywords": [
+        "압력",
+        "챔버",
+        "Valve"
+      ],
+      "text": "Valve 튜닝이 부정확하면 챔버 압력 overshoot가 잦아져 성장률(GPC) 균일도가 떨어질 수 있다."
+    },
+    {
+      "id": 178,
+      "keywords": [
+        "압력",
+        "챔버",
+        "Valve"
+      ],
+      "text": "챔버 압력이 목표값에 도달하지 않으면 Valve 튜닝 오류나 MFC 응답 실패 가능성을 점검해야 한다."
+    },
+    {
+      "id": 179,
+      "keywords": [
+        "Valve",
+        "압력",
+        "플라즈마"
+      ],
+      "text": "Valve tuning이 잘못되면 플라즈마 반응 구간에서 압력 파형이 흔들려 라디칼 밀도 재현성이 떨어진다."
+    },
+    {
+      "id": 180,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "Valve"
+      ],
+      "text": "Valve 개도 제어가 느려지면 플라즈마 공정의 순간 압력 제어가 불안정해져 라디칼 농도 분포가 변화한다."
+    },
+    {
+      "id": 181,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "Valve"
+      ],
+      "text": "압력 제어 Valve의 tuning이 부정확하면 플라즈마 플럭스가 변하며 성장률 변동이 커진다."
+    },
+    {
+      "id": 182,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "Valve"
+      ],
+      "text": "플라즈마 중 Valve 제어 지연이 발생하면 압력이 순간적으로 변해 이온 충격 에너지가 일정하지 않게 된다."
+    },
+    {
+      "id": 183,
+      "keywords": [
+        "챔버",
+        "웨이퍼",
+        "Valve"
+      ],
+      "text": "Valve 제어가 지연되면 웨이퍼 표면 반응 중 압력 유지가 불안정해지고 성장률 편차가 생긴다."
+    },
+    {
+      "id": 184,
+      "keywords": [
+        "챔버",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 투입 시 Valve 제어 지연이 발생하면 챔버 내 압력이 순간적으로 상승해 초기 반응 조건이 왜곡된다."
+    },
+    {
+      "id": 185,
+      "keywords": [
+        "Valve",
+        "챔버",
+        "웨이퍼"
+      ],
+      "text": "챔버 반응 중 Valve 개도 변화가 크면 웨이퍼 표면 물리·화학 반응이 일정하게 유지되지 않는다."
+    },
+    {
+      "id": 186,
+      "keywords": [
+        "Valve",
+        "웨이퍼",
+        "플라즈마"
+      ],
+      "text": "Valve 개도 조절 미세 오차는 플라즈마 공급 가스 분포를 왜곡시켜 웨이퍼 반응 균일도를 떨어뜨린다."
+    },
+    {
+      "id": 187,
+      "keywords": [
+        "플라즈마",
+        "Valve",
+        "웨이퍼"
+      ],
+      "text": "Valve 개도율이 불안정하면 플라즈마 반응 중 웨이퍼 표면 도달 라디칼 농도가 변해 성장률 편차가 발생한다."
+    },
+    {
+      "id": 188,
+      "keywords": [
+        "챔버",
+        "Valve",
+        "플라즈마"
+      ],
+      "text": "Valve 개도율이 일정하지 않으면 플라즈마 반응 가스 공급량이 흔들려 챔버 내 반응성이 불안정하다."
+    },
+    {
+      "id": 189,
+      "keywords": [
+        "Valve",
+        "챔버",
+        "플라즈마"
+      ],
+      "text": "Valve 응답 속도는 플라즈마 공급 가스 분포에 직접 영향을 미쳐 챔버 내 반응 균일도를 좌우한다."
+    },
+    {
+      "id": 190,
+      "keywords": [
+        "플라즈마",
+        "챔버",
+        "Valve"
+      ],
+      "text": "플라즈마 균일도 확보를 위해서는 챔버 구조와 Valve 개도율 간 상관관계를 정확히 이해해야 한다."
+    },
+    {
+      "id": 191,
+      "keywords": [
+        "압력",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 언로드 중 압력 차이가 크면 로드락 내부 기체 유동이 불안정해져 오염 가능성이 높아진다."
+    },
+    {
+      "id": 192,
+      "keywords": [
+        "압력",
+        "챔버",
+        "로드락"
+      ],
+      "text": "로드락 압력이 메인 챔버와 일치하지 않으면 웨이퍼 인입 과정에서 압력 쇼크가 발생해 반응 초기 안정성이 깨진다."
+    },
+    {
+      "id": 193,
+      "keywords": [
+        "압력",
+        "챔버",
+        "로드락"
+      ],
+      "text": "로드락과 챔버 간 압력 매칭이 느리면 웨이퍼 이송 cycle time이 증가해 장비 스루풋이 저하된다."
+    },
+    {
+      "id": 194,
+      "keywords": [
+        "로드락",
+        "압력",
+        "챔버"
+      ],
+      "text": "로드락과 챔버 간 압력 차이가 크면 웨이퍼 이동 중 파티클 이동 경로가 바뀌어 오염이 증가한다."
+    },
+    {
+      "id": 195,
+      "keywords": [
+        "로드락",
+        "압력",
+        "플라즈마"
+      ],
+      "text": "로드락 압력 안정이 느리면 플라즈마 점화 시 초기 라디칼 농도가 크게 흔들릴 수 있다."
+    },
+    {
+      "id": 196,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "로드락"
+      ],
+      "text": "로드락에서 압력 매칭이 불안정하면 플라즈마 챔버로 웨이퍼 이동 시 초기 반응 조건이 흔들린다."
+    },
+    {
+      "id": 197,
+      "keywords": [
+        "챔버",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "로드락과 챔버 압력이 일치하지 않으면 웨이퍼 인입 시 미세한 퍼징 흐름이 왜곡될 수 있다."
+    },
+    {
+      "id": 198,
+      "keywords": [
+        "플라즈마",
+        "로드락",
+        "웨이퍼"
+      ],
+      "text": "플라즈마 공정 후 로드락 압력이 충분히 회복되지 않으면 웨이퍼 이송 중 라디칼 잔류가 발생할 수 있다."
+    },
+    {
+      "id": 199,
+      "keywords": [
+        "챔버",
+        "로드락",
+        "플라즈마"
+      ],
+      "text": "로드락과 챔버 간 압력 조절이 어긋나면 플라즈마 반응 시작 시 챔버 유동 패턴이 불안정해진다."
+    },
+    {
+      "id": 200,
+      "keywords": [
+        "압력",
+        "챔버",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 로딩 직후 챔버 압력이 안정되지 않으면 ALD 첫 번째 half-cycle에서 반응 편차가 발생한다."
+    },
+    {
+      "id": 201,
+      "keywords": [
+        "압력",
+        "웨이퍼",
+        "플라즈마"
+      ],
+      "text": "압력 안정성이 확보되지 않으면 플라즈마 밀도가 웨이퍼 표면에서 균일하게 유지되지 않는다."
+    },
+    {
+      "id": 202,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 온도와 챔버 압력이 동시에 변화할 경우 플라즈마 라디칼의 표면 반응성이 달라져 성장률 변동이 커질 수 있다."
+    },
+    {
+      "id": 203,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "웨이퍼"
+      ],
+      "text": "웨이퍼 표면 온도와 압력 조건이 부적절하면 플라즈마 라디칼이 충분히 흡착되지 않는다."
+    },
+    {
+      "id": 204,
+      "keywords": [
+        "플라즈마",
+        "웨이퍼",
+        "압력"
+      ],
+      "text": "플라즈마 반응 중 압력 상승은 웨이퍼 표면의 이온 충돌 에너지를 변화시켜 조성 변화를 일으킬 수 있다."
+    },
+    {
+      "id": 205,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "챔버"
+      ],
+      "text": "플라즈마 공정에서 챔버 압력이 불안정하면 라디칼 생성량이 변동되어 반응 균일도가 크게 저하될 수 있다."
+    },
+    {
+      "id": 206,
+      "keywords": [
+        "플라즈마",
+        "압력",
+        "챔버"
+      ],
+      "text": "플라즈마 반응은 챔버 압력과 전극 구조가 결합적으로 작용하며 라디칼 밀도 분포가 이를 결정한다."
+    },
+    {
+      "id": 207,
+      "keywords": [
+        "플라즈마",
+        "웨이퍼",
+        "챔버"
+      ],
+      "text": "웨이퍼 위치에 따른 플라즈마 분포 차이는 챔버 전극 구조 및 가스 유동 패턴과 밀접한 관련이 있다."
+    },
+    {
+      "id": 208,
+      "keywords": [
+        "챔버",
+        "웨이퍼",
+        "플라즈마"
+      ],
+      "text": "웨이퍼가 챔버 중앙에서 벗어나면 플라즈마 분포가 비대칭으로 형성되어 성장률 균일도가 낮아진다."
+    },
+    {
+      "id": 209,
+      "keywords": [
+        "플라즈마",
+        "챔버",
+        "웨이퍼"
+      ],
+      "text": "플라즈마 라디칼은 웨이퍼와 챔버 구조에 따라 분포가 달라지므로 공간적 균일도 확보가 중요하다."
+    },
+    {
+      "id": 210,
+      "keywords": [
+        "ALD",
+        "Plasma",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Plasma ALD에서 Flow와 Pressure의 미세한 변화는 라디칼 확산 길이를 바꾸며, 패턴 종횡비가 큰 구조에서 반응 균일도를 크게 좌우한다."
+    },
+    {
+      "id": 211,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "MFC",
+        "Flow"
+      ],
+      "text": "Plasma 상태에서 Precursor Flow가 과도하면 라디칼과 경쟁 반응이 발생해 표면 활성화 효율이 떨어진다."
+    },
+    {
+      "id": 212,
+      "keywords": [
+        "Plasma",
+        "MFC",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Plasma 균일도는 MFC Flow 안정성과 Pressure 유지 능력에 크게 의존하며, 둘 중 하나만 흔들려도 반응 분포가 깨진다."
+    },
+    {
+      "id": 213,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "MFC",
+        "Flow"
+      ],
+      "text": "Precursor 주입 후 Purge Flow가 충분하지 않으면 MFC 제어로도 잔류 분자가 완전히 제거되지 않아 이중 반응이 발생한다."
+    },
+    {
+      "id": 214,
+      "keywords": [
+        "Purge",
+        "MFC",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Purge 중 MFC 응답 속도가 늦어 Flow–Pressure 변동이 생기면 잔류 가스 제거 효율이 크게 떨어진다."
+    },
+    {
+      "id": 215,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Flow–Pressure 조건에 따라 Plasma 라디칼의 mean free path가 달라져 Precursor 표면 반응성도 함께 변동된다."
+    },
+    {
+      "id": 216,
+      "keywords": [
+        "Purge",
+        "Plasma",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Plasma Purge 단계에서 Flow가 불안정하면 라디칼 제거가 지연되어 표면 손상 가능성이 높아진다."
+    },
+    {
+      "id": 217,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "Flow",
+        "Pressure"
+      ],
+      "text": "Precursor-Purge 전환 시 Flow–Pressure 응답 속도가 느리면 표면 포화 반응이 흐트러져 ALD의 self-limiting 특성이 약해진다."
+    },
+    {
+      "id": 218,
+      "keywords": [
+        "Precursor",
+        "Plasma",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "Plasma 챔버 Pressure가 높아지면 Precursor 분해 경로가 변화해 박막 내 불순물 농도가 증가할 수 있다."
+    },
+    {
+      "id": 219,
+      "keywords": [
+        "Purge",
+        "Plasma",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "Plasma Purge에서 Pressure 회복이 느리면 음이온·중성종의 잔류 시간이 증가해 다음 사이클의 반응이 불안정해진다."
+    },
+    {
+      "id": 220,
+      "keywords": [
+        "Precursor",
+        "Purge",
+        "MFC",
+        "Pressure"
+      ],
+      "text": "Purge 중 Pressure가 불안정하면 Precursor 흡착층이 완전히 제거되지 않아 cycle 간 성장률 편차가 증가한다."
+    },
+    {
+      "id": 221,
+      "keywords": [
+        "로드락",
+        "Gate Valve",
+        "챔버",
+        "장비 구조"
+      ],
+      "text": "ALD 장비는 크게 Load Lock(로드락), Gate Valve(게이트 밸브, VG12/VG13 등), Main Chamber(메인 챔버)로 구성된다. 웨이퍼는 외부 대기 환경에서 먼저 Load Lock에 로딩되고, Load Lock 내부 압력이 진공 펌프를 통해 Main Chamber와 유사한 수준까지 낮아진 뒤 Gate Valve를 열어 Main Chamber로 이송된다. Load Lock은 외부 대기압과 고진공 공정 챔버 사이에서 압력을 단계적으로 맞춰주는 완충 구역이며, 웨이퍼의 입·출구 역할을 한다. Gate Valve(VG12/VG13)는 Load Lock과 Main Chamber 사이를 물리적으로 차단·연결하는 밸브로, 두 공간의 압력 차이가 너무 클 때는 열리지 않도록 인터락이 걸린다. Main Chamber는 실제 ALD 공정(전구체 주입, 퍼지, 플라즈마 처리 등)이 이루어지는 핵심 공정 공간으로, 공정 동안에는 안정적인 진공도와 온도가 유지되어야 한다. 이 구조를 통해 웨이퍼를 외부에서 반복적으로 투입하면서도 Main Chamber의 공정 환경은 최대한 일정하게 유지할 수 있고, 파티클 발생과 오염을 줄일 수 있다."
+    },
+    {
+      "id": 222,
+      "keywords": [
+        "로드락",
+        "Gate Valve",
+        "챔버",
+        "장비 구조"
+      ],
+      "text": "ALD 장비는 Load Lock–Gate Valve–Main Chamber 구조로 이루어지며, Load Lock에서 압력을 진공으로 낮춘 뒤 Gate Valve를 열어 웨이퍼를 Main Chamber로 이송한다. 이 구조는 외부 환경과 공정 환경을 분리해 오염을 줄이고 택타임을 단축한다."
+    },
+    {
+      "id": 223,
+      "keywords": [
+        "로드락",
+        "역할",
+        "압력"
+      ],
+      "text": "Load Lock은 외부 대기압과 Main Chamber의 고진공 환경 사이의 완충 공간으로, 로딩된 웨이퍼의 압력을 단계적으로 낮춘 뒤 공정 챔버로 이송하도록 한다."
+    },
+    {
+      "id": 224,
+      "keywords": [
+        "챔버",
+        "로드락",
+        "차이점"
+      ],
+      "text": "Main Chamber는 실제 ALD 반응이 일어나는 공정 공간이며 온도·압력·가스 유량이 정밀 제어된다. Load Lock은 외부와의 인터페이스 역할로 압력 전환과 웨이퍼 입출구를 담당한다."
+    },
+    {
+      "id": 225,
+      "keywords": [
+        "Gate Valve",
+        "VG12",
+        "VG13",
+        "역할"
+      ],
+      "text": "Gate Valve(VG12/VG13)는 Load Lock과 Main Chamber 사이를 차단 또는 연결하는 밸브로, 두 챔버의 압력이 일정 조건을 만족할 때만 열린다."
+    },
+    {
+      "id": 226,
+      "keywords": [
+        "로드락",
+        "Gate Valve",
+        "이송"
+      ],
+      "text": "웨이퍼 이송 절차는 Load Lock 로딩 → 압력 펌프다운 → Gate Valve 오픈 → Main Chamber로 웨이퍼 이동 → Gate Valve 클로즈 순으로 진행된다."
+    },
+    {
+      "id": 227,
+      "keywords": [
+        "로드락",
+        "필요성",
+        "진공"
+      ],
+      "text": "Load Lock이 없다면 웨이퍼 로딩 시마다 Main Chamber를 대기압까지 올려야 하며, 이는 공정 안정성과 생산성 모두를 크게 저하시킨다."
+    },
+    {
+      "id": 228,
+      "keywords": [
+        "Gate Valve",
+        "인터락",
+        "압력"
+      ],
+      "text": "Load Lock과 Main Chamber 압력 차이가 허용 범위를 벗어나면 Gate Valve는 인터락에 의해 열리지 않아 장비 오염과 파티클 발생을 예방한다."
+    },
+    {
+      "id": 229,
+      "keywords": [
+        "로드락",
+        "고장",
+        "위험"
+      ],
+      "text": "Load Lock 고장은 웨이퍼 이송 실패로 이어져 장비 가동률을 낮추며, 도어 누설 시에는 오염이 Gate Valve와 Main Chamber로 전파될 수 있다."
+    },
+    {
+      "id": 230,
+      "keywords": [
+        "처리량",
+        "로드락",
+        "장비 구조"
+      ],
+      "text": "Load Lock–Gate Valve–Main Chamber 구조는 공정과 로딩을 분리하여 택타임을 단축하고 Main Chamber의 안정적인 공정 조건을 유지하도록 설계되었다."
+    },
+    {
+      "id": 231,
+      "keywords": [
+        "모니터링",
+        "로드락",
+        "Gate Valve",
+        "압력"
+      ],
+      "text": "장비 상태 모니터링 시 Load Lock 압력, Main Chamber 압력, Gate Valve 개폐 상태를 함께 확인하면 웨이퍼 이송 시퀀스의 정상 여부를 판단할 수 있다."
+    },
+    {
+      "id": 232,
+      "keywords": [
+        "로드락",
+        "Gate Valve",
+        "장비 구조"
+      ],
+      "text": "Load Lock과 Gate Valve는 공정 챔버를 외부로부터 고립시키는 역할을 하며, 안정적인 진공 유지와 오염 방지에 필수적인 구조를 제공한다."
+    },
+    {
+      "id": 233,
+      "keywords": [
+        "Gate Valve",
+        "VG12",
+        "VG13",
+        "기능"
+      ],
+      "text": "VG12와 VG13은 Load Lock과 Main Chamber 사이의 게이트 밸브 개폐 상태를 제어하는 신호이며, 압력이나 온도를 측정하는 센서가 아니다."
+    },
+    {
+      "id": 234,
+      "keywords": [
+        "Gate Valve",
+        "센서",
+        "차이점"
+      ],
+      "text": "VG12/VG13은 밸브 개폐 신호이고 PressureSensor는 압력을 측정하는 센서로, 두 신호는 기능적으로 완전히 다르다."
+    },
+    {
+      "id": 235,
+      "keywords": [
+        "Gate Valve",
+        "이송",
+        "시퀀스"
+      ],
+      "text": "웨이퍼 이송 시 Load Lock과 Main Chamber의 압력이 일정 범위에 도달하면 VG12/VG13이 Open 상태로 전환되어 두 공간이 연결된다."
+    },
+    {
+      "id": 236,
+      "keywords": [
+        "Gate Valve",
+        "인터락",
+        "압력"
+      ],
+      "text": "압력 차이가 허용치를 초과하면 VG12/VG13은 인터락에 의해 열리지 않아 급격한 기체 이동과 파티클 유입을 방지한다."
+    },
+    {
+      "id": 237,
+      "keywords": [
+        "VG12",
+        "VG13",
+        "모니터링"
+      ],
+      "text": "VG12/VG13의 상태는 Load Lock과 Main Chamber의 연결 여부를 나타내므로 웨이퍼 이송 모니터링에서 중요한 지표가 된다."
+    },
+    {
+      "id": 238,
+      "keywords": [
+        "Gate Valve",
+        "오류",
+        "불일치"
+      ],
+      "text": "VG12/VG13 신호가 Open으로 표시되지만 Load Lock 압력이 급변하지 않는다면 실제 밸브 개폐 상태와 신호가 불일치하는 I/O 오류 가능성이 있다."
+    },
+    {
+      "id": 239,
+      "keywords": [
+        "Gate Valve",
+        "압력 센서",
+        "혼동"
+      ],
+      "text": "Gate Valve 신호는 개폐 상태만 나타내며 압력 값을 제공하지 않으므로, VG12/VG13을 압력 센서로 해석하는 것은 잘못된 판단이다."
+    },
+    {
+      "id": 240,
+      "keywords": [
+        "Gate Valve",
+        "비정상",
+        "압력 상승"
+      ],
+      "text": "VG12/VG13이 Open인데 Load Lock 압력이 상승한다면 Main Chamber 또는 배관의 누설을 의심해야 한다."
+    },
+    {
+      "id": 241,
+      "keywords": [
+        "Gate Valve",
+        "시퀀스",
+        "진공"
+      ],
+      "text": "Gate Valve는 Load Lock과 Main Chamber 압력이 진공 조건에서 충분히 수렴한 뒤에만 Open되도록 시퀀스가 설정된다."
+    },
+    {
+      "id": 242,
+      "keywords": [
+        "Gate Valve",
+        "안전",
+        "파티클"
+      ],
+      "text": "VG12/VG13의 인터락 로직은 파티클 발생과 챔버 오염을 방지하기 위해 압력 안정 여부를 엄격히 확인한 뒤에만 밸브를 연다."
+    },
+    {
+      "id": 243,
+      "keywords": [
+        "압력",
+        "Gate Valve",
+        "로드락",
+        "챔버"
+      ],
+      "text": "Load Lock과 Main Chamber 압력이 충분히 수렴하지 않으면 Gate Valve는 Open되지 않아 웨이퍼 이송 시 압력 충돌로 인한 파티클 발생을 방지한다."
+    },
+    {
+      "id": 244,
+      "keywords": [
+        "로드락",
+        "압력",
+        "이송"
+      ],
+      "text": "웨이퍼 이송 시 Load Lock 압력이 목표 진공에 도달하지 않으면 이송 시퀀스는 중단되고 Gate Valve는 Close 상태를 유지한다."
+    },
+    {
+      "id": 245,
+      "keywords": [
+        "Gate Valve",
+        "압력",
+        "비정상"
+      ],
+      "text": "Gate Valve가 Open 상태인데 Load Lock 압력이 상승한다면 Main Chamber 또는 연결 배관의 누설 가능성을 고려해야 한다."
+    },
+    {
+      "id": 246,
+      "keywords": [
+        "압력",
+        "안정성",
+        "로드락"
+      ],
+      "text": "Load Lock 펌프다운 속도가 비정상적으로 느리면 압력 안정이 지연되어 Gate Valve Open 시퀀스가 반복적으로 대기 상태에 머무를 수 있다."
+    },
+    {
+      "id": 247,
+      "keywords": [
+        "Gate Valve",
+        "센서",
+        "혼동"
+      ],
+      "text": "Gate Valve 신호는 밸브 개폐 상태만 나타내므로 Load Lock 압력 센서 데이터와 혼동해서는 안 된다."
+    },
+    {
+      "id": 248,
+      "keywords": [
+        "챔버",
+        "로드락",
+        "압력"
+      ],
+      "text": "Main Chamber 압력이 불안정할 경우 Load Lock과의 압력 매칭 과정이 반복되며, 이는 웨이퍼 이송 딜레이로 이어질 수 있다."
+    },
+    {
+      "id": 249,
+      "keywords": [
+        "Gate Valve",
+        "시퀀스",
+        "안전"
+      ],
+      "text": "Gate Valve는 Load Lock의 펌프다운 완료, 도어 닫힘, 압력 안정 조건이 모두 충족되지 않으면 안전 인터락에 의해 열리지 않는다."
+    },
+    {
+      "id": 250,
+      "keywords": [
+        "압력",
+        "로드락",
+        "복구"
+      ],
+      "text": "Load Lock 압력이 설정값 아래로 충분히 떨어지지 않으면 Recovery 루틴이 실행되어 추가 펌프다운 또는 밸브 점검 단계가 진행된다."
+    },
+    {
+      "id": 251,
+      "keywords": [
+        "Gate Valve",
+        "챔버",
+        "유량"
+      ],
+      "text": "Gate Valve가 급격히 열릴 경우 Load Lock에서 Main Chamber로 기체가 빠르게 이동해 공정 챔버 내 파티클 증가를 유발할 수 있다."
+    },
+    {
+      "id": 252,
+      "keywords": [
+        "로드락",
+        "밸브",
+        "인터락"
+      ],
+      "text": "Load Lock 도어가 완전히 닫혀 있지 않으면 Gate Valve 인터락이 작동하여 Main Chamber와 연결되지 않도록 한다."
+    },
+    {
+      "id": 253,
+      "keywords": [
+        "압력",
+        "모니터링",
+        "로드락"
+      ],
+      "text": "Load Lock 압력이 펌프다운 중 갑자기 상승한다면 배기 라인 누설 또는 도어 시일 손상이 우선적으로 의심된다."
+    },
+    {
+      "id": 254,
+      "keywords": [
+        "Gate Valve",
+        "압력",
+        "시퀀스"
+      ],
+      "text": "Load Lock과 Main Chamber의 압력이 0.1 Torr 이내로 수렴했을 때만 Gate Valve가 Open되도록 설정하는 경우가 많다."
+    },
+    {
+      "id": 255,
+      "keywords": [
+        "로드락",
+        "이송",
+        "안정성"
+      ],
+      "text": "Load Lock 압력이 안정되지 않은 상태에서 이송을 시도하면 웨이퍼 표면에 미세 기체 충격이 발생해 공정 결함의 원인이 될 수 있다."
+    },
+    {
+      "id": 256,
+      "keywords": [
+        "챔버",
+        "압력",
+        "밸브"
+      ],
+      "text": "Main Chamber 압력이 갑자기 상승하는 경우 Gate Valve는 자동으로 Close되어 공정 공간을 보호하도록 설계되어 있다."
+    },
+    {
+      "id": 257,
+      "keywords": [
+        "Gate Valve",
+        "로드락",
+        "이송 오류"
+      ],
+      "text": "웨이퍼 감지 센서와 Gate Valve 개폐 시점이 일치하지 않으면 Transfer Error가 발생하며, 이때 Load Lock 압력과 밸브 상태를 함께 점검해야 한다."
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반도체 ALD RAG 챗봇</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // localStorage 초기화 (API 연결 문제 해결)
+      // 페이지 로드 시 잘못된 API 주소를 자동으로 제거
+      (function() {
+        const saved = localStorage.getItem('api_base_url');
+        // 8080 포트(프론트엔드 포트)로 설정된 경우 제거
+        if (saved && saved.includes(':8080')) {
+          console.log('[초기화] 잘못된 API 주소 제거:', saved);
+          localStorage.removeItem('api_base_url');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- 헤더 -->
+      <header class="app-header">
+        <div class="header-content">
+          <div class="header-title">
+            <h1>🔬 반도체 ALD RAG 챗봇</h1>
+            <p class="subtitle">docs_ald.json + LLaMA 기반 반도체 공정 질의응답 시스템</p>
+          </div>
+          <div class="header-status">
+            <div class="status-pill" id="api-status">
+              <span class="status-dot"></span>
+              <span class="status-text">API 연결 확인 중...</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 시스템 정보 (MODEL_INFO 활용) -->
+        <div class="system-info" id="system-info" style="display: none;">
+          <div class="info-item">
+            <span class="info-label">API 주소:</span>
+            <span class="info-value" id="info-api-url" style="cursor: pointer; text-decoration: underline;" title="클릭하여 변경">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Device:</span>
+            <span class="info-value" id="info-device">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">문서:</span>
+            <span class="info-value" id="info-docs">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">키워드:</span>
+            <span class="info-value" id="info-keywords">-</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 탭 네비게이션 -->
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="chat">💬 채팅</button>
+        <button class="tab-btn" data-tab="docs">📚 문서 관리</button>
+      </nav>
+
+      <!-- 메인 컨텐츠 -->
+      <div class="main-content">
+        <!-- 채팅 탭 -->
+        <div class="tab-content active" id="tab-chat" style="display: grid !important; grid-template-columns: 220px 1fr !important; gap: 16px; width: 100%;">
+          <!-- 왼쪽: 옵션 -->
+          <aside class="sidebar" style="width: 220px !important; min-width: 220px !important; max-width: 220px !important;">
+            <section class="panel panel-options">
+              <div class="panel-header-collapsible">
+                <h2>⚙️ 질의 옵션</h2>
+                <button class="collapse-btn" id="options-collapse-btn" title="옵션 접기/펼치기">▼</button>
+              </div>
+              
+              <div class="options-grid" id="options-content">
+                <!-- 키워드 필터 -->
+                <div class="option-group">
+                  <label for="keyword-select" class="option-label">
+                    <span>🔍 키워드 필터</span>
+                    <span class="tooltip-icon" title="특정 키워드의 문서만 검색합니다">ℹ️</span>
+                  </label>
+                  <select id="keyword-select" class="select-input">
+                    <option value="">(전체 키워드)</option>
+                  </select>
+                  <p class="option-hint">특정 키워드만 검색하려면 선택하세요</p>
+                </div>
+
+                <!-- Top-k -->
+                <div class="option-group">
+                  <label for="topk-input" class="option-label">
+                    <span>📊 Top-k 문장 수</span>
+                    <span class="badge badge-primary" id="topk-label">3</span>
+                  </label>
+                  <input
+                    type="range"
+                    id="topk-input"
+                    class="range-input"
+                    min="1"
+                    max="10"
+                    value="3"
+                  />
+                  <div class="range-labels">
+                    <span>1</span>
+                    <span>10</span>
+                  </div>
+                  <p class="option-hint">검색해서 LLM에 전달할 문장 개수</p>
+                </div>
+
+                <!-- Max Tokens -->
+                <div class="option-group">
+                  <label for="max-tokens-input" class="option-label">
+                    <span>📝 최대 생성 토큰</span>
+                    <span class="badge badge-primary" id="max-tokens-label">256</span>
+                  </label>
+                  <input
+                    type="range"
+                    id="max-tokens-input"
+                    class="range-input"
+                    min="64"
+                    max="512"
+                    step="32"
+                    value="256"
+                  />
+                  <div class="range-labels">
+                    <span>64</span>
+                    <span>512</span>
+                  </div>
+                  <p class="option-hint">답변 길이 조절 (길수록 느림)</p>
+                </div>
+
+                <!-- 옵션 플래그 -->
+                <div class="option-group option-flags">
+                  <label class="option-label">🎛️ 고급 옵션</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="context-only" />
+                      <div class="checkbox-content">
+                        <span class="checkbox-text">컨텍스트만 보기</span>
+                        <span class="checkbox-hint">답변 생성 없이 검색 결과만</span>
+                      </div>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="debug-flag" />
+                      <div class="checkbox-content">
+                        <span class="checkbox-text">디버그 모드</span>
+                        <span class="checkbox-hint">백엔드 콘솔에 상세 로그 출력</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </aside>
+
+          <!-- 중앙: 질문 입력과 답변 나란히 -->
+          <main class="content-area" style="display: flex !important; flex-direction: column !important; width: 100% !important; min-width: 0;">
+            <div class="chat-layout" style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px !important; width: 100% !important; min-width: 0;">
+              <!-- 왼쪽: 질문 입력 -->
+              <section class="panel panel-question">
+                <h2>💬 질문 입력</h2>
+                <div class="question-wrapper">
+                  <textarea
+                    id="question"
+                    class="question-input"
+                    placeholder="예) ALD에서 Purge 단계는 왜 중요한가요?&#10;예) MFC에 이상이 생기면 어떤 징후로 확인할 수 있어?&#10;예) VG12와 VG13의 차이는?"
+                    rows="8"
+                  ></textarea>
+                  <div class="question-footer">
+                    <button id="send-btn" class="btn-primary">
+                      <span class="btn-icon">🚀</span>
+                      <span class="btn-text">질문 보내기</span>
+                    </button>
+                    <div class="question-hints">
+                      <span class="hint-text">⌘+Enter / Ctrl+Enter로 전송</span>
+                    </div>
+                  </div>
+                  <div id="info-line" class="info-line"></div>
+                </div>
+              </section>
+
+              <!-- 오른쪽: 모델 답변 -->
+              <section class="panel panel-answer">
+                <div class="panel-header">
+                  <h2>🤖 모델 답변</h2>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="display: flex; align-items: center; gap: 4px; position: relative;">
+                      <span id="confidence-badge" style="display: none; font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--bg-input); color: var(--text-sub);"></span>
+                      <span id="confidence-help" class="confidence-help-icon" style="display: none; cursor: help; font-size: 12px; color: var(--text-sub); opacity: 0.6; transition: opacity 0.2s;" title="신뢰도 산정 방법">❓</span>
+                      <div id="confidence-tooltip" class="confidence-tooltip" style="display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; padding: 12px; background: var(--bg-panel); border: 1px solid var(--border-subtle); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; min-width: 280px; max-width: 350px; font-size: 12px; line-height: 1.6; color: var(--text-main);">
+                        <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-main);">📊 신뢰도 산정 방법</div>
+                        <div style="color: var(--text-sub);">
+                          검색된 문서들의 유사도 점수를 기반으로 계산됩니다:<br/>
+                          <br/>
+                          • <strong>최고 점수 70%</strong> + <strong>평균 점수 30%</strong><br/>
+                          <br/>
+                          <strong>신뢰도 기준:</strong><br/>
+                          • 높음 (70% 이상): 관련 문서가 잘 검색됨<br/>
+                          • 보통 (50-69%): 관련 문서가 일부 검색됨<br/>
+                          • 낮음 (50% 미만): 관련 문서가 부족함
+                        </div>
+                        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-sub);">
+                          💡 낮은 신뢰도는 질문을 더 구체적으로 바꾸거나 문서를 보강하면 개선될 수 있습니다.
+                        </div>
+                      </div>
+                    </div>
+                    <button id="clear-answer-btn" class="btn-ghost">
+                      <span>🗑️</span> 지우기
+                    </button>
+                  </div>
+                </div>
+                <div id="answer" class="answer-content">
+                  <div class="empty-state">
+                    <div class="empty-icon">💭</div>
+                    <p>왼쪽에 질문을 입력하고 전송 버튼을 눌러주세요.</p>
+                  </div>
+                </div>
+                <!-- 관련 질문 영역 -->
+                <div id="related-questions" class="related-questions" style="display: none; margin-top: 16px; padding: 12px; background: var(--bg-secondary); border-radius: var(--radius-md);"></div>
+                <!-- 피드백 버튼 영역 -->
+                <div id="feedback-area" class="feedback-area" style="display: none;">
+                  <div class="feedback-label">이 답변이 도움이 되었나요?</div>
+                  <div class="feedback-buttons">
+                    <button id="feedback-like-btn" class="btn-feedback btn-like" title="좋아요">
+                      👍 좋아요
+                    </button>
+                    <button id="feedback-dislike-btn" class="btn-feedback btn-dislike" title="싫어요">
+                      👎 싫어요
+                    </button>
+                  </div>
+                  <div id="feedback-thanks" class="feedback-thanks" style="display: none;">
+                    감사합니다! 피드백이 저장되었습니다.
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- 최근 질문/답변 히스토리와 컨텍스트 나란히 배치 -->
+            <div class="history-context-layout">
+              <!-- 최근 질문/답변 히스토리 -->
+              <section class="panel panel-history">
+                <div class="panel-header">
+                  <h2>💬 최근 질문/답변</h2>
+                  <button id="clear-history-btn" class="btn-ghost-small" title="히스토리 지우기">
+                    🗑️
+                  </button>
+                </div>
+                <div id="question-history" class="history-content">
+                  <div class="empty-state">
+                    <div class="empty-icon">💭</div>
+                    <p>질문을 보내면 여기에 히스토리가 저장됩니다.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 컨텍스트 영역 -->
+              <section class="panel panel-context">
+                <div class="panel-header-collapsible">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <h2>📚 참고한 컨텍스트</h2>
+                    <span id="context-count" class="badge badge-info">0 개</span>
+                  </div>
+                  <button class="collapse-btn" id="context-collapse-btn" title="컨텍스트 접기/펼치기">▼</button>
+                </div>
+                <div id="contexts" class="context-content">
+                  <div class="empty-state">
+                    <div class="empty-icon">📄</div>
+                    <p>검색된 컨텍스트가 여기에 표시됩니다.</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </main>
+        </div>
+
+        <!-- 문서 관리 탭 -->
+        <div class="tab-content" id="tab-docs" style="display: none; width: 100%;">
+          <div class="docs-management">
+            <!-- 문서 통계 (키워드 통계 포함) -->
+            <section class="panel panel-docs-stats">
+              <div class="panel-header">
+                <h2>📊 문서 통계</h2>
+                <button id="refresh-docs-stats-btn" class="btn-ghost-small" title="통계 새로고침">
+                  🔄
+                </button>
+              </div>
+              <div id="docs-stats-content" class="docs-stats-content">
+                <div class="loading-state">
+                  <div class="spinner"></div>
+                  <p>통계를 불러오는 중...</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 문서 추가 -->
+            <section class="panel panel-docs-add">
+              <h2>➕ 문서 추가</h2>
+              <form id="docs-add-form" class="docs-form">
+                <div class="form-group">
+                  <label for="add-keyword">키워드 (쉼표로 구분)</label>
+                  <input type="text" id="add-keyword" class="form-input" placeholder="예: ALD, Precursor" required />
+                </div>
+                <div class="form-group">
+                  <label for="add-text">문장 내용</label>
+                  <textarea id="add-text" class="form-textarea" rows="3" placeholder="추가할 문장을 입력하세요" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">추가</button>
+              </form>
+              <div id="docs-add-result" class="docs-result"></div>
+            </section>
+
+            <!-- 문서 추출 -->
+            <section class="panel panel-docs-extract">
+              <h2>📄 파일에서 추출</h2>
+              <form id="docs-extract-form" class="docs-form">
+                <div class="form-group">
+                  <label for="extract-file">파일 선택</label>
+                  <input type="file" id="extract-file" class="form-input" accept=".txt,.pdf" required />
+                </div>
+                <div class="form-group">
+                  <label for="extract-keywords">키워드 (쉼표로 구분)</label>
+                  <input type="text" id="extract-keywords" class="form-input" placeholder="예: ALD, MFC, Flow" required />
+                </div>
+                <div class="form-group">
+                  <label for="extract-type">파일 타입</label>
+                  <select id="extract-type" class="form-input">
+                    <option value="text">텍스트</option>
+                    <option value="pdf">PDF</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn-primary">추출 및 추가</button>
+              </form>
+              <div id="docs-extract-result" class="docs-result"></div>
+            </section>
+
+            <!-- 문서 생성 -->
+            <section class="panel panel-docs-generate">
+              <h2>🤖 LLM/템플릿으로 생성</h2>
+              <form id="docs-generate-form" class="docs-form">
+                <div class="form-group">
+                  <label for="generate-mode">생성 모드</label>
+                  <select id="generate-mode" class="form-input">
+                    <option value="template">템플릿</option>
+                    <option value="llm">LLM (기존 데이터 기반)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="generate-keyword">키워드</label>
+                  <input type="text" id="generate-keyword" class="form-input" placeholder="예: ALD" required />
+                </div>
+                <div class="form-group">
+                  <label for="generate-count">생성 개수</label>
+                  <input type="number" id="generate-count" class="form-input" min="1" max="10" value="3" required />
+                </div>
+                <button type="submit" class="btn-primary">생성 및 추가</button>
+              </form>
+              <div id="docs-generate-result" class="docs-result"></div>
+            </section>
+
+            <!-- 키워드별 그룹 보기 -->
+            <section class="panel panel-docs-group">
+              <h2>📚 키워드별 문서 보기</h2>
+              <button id="load-group-btn" class="btn-primary">문서 목록 불러오기</button>
+              <div id="docs-group-content" class="docs-group-content"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+torch-env/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Model weights and caches
+.cache/
+huggingface/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Runtime output and local backups
+/logs/
+*.log
+*.backup
+*.backup2
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+
+# Local-only utilities and design notes, intentionally not committed
+/skills/skill.py
+/specs/
+/_ald_update/

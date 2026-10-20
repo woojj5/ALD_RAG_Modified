@@ -1,0 +1,23 @@
+{
+  "synonym_groups": [
+    ["플라즈마", "Plasma", "plasma", "플라즈마 ALD"],
+    ["압력", "Pressure", "pressure"],
+    ["챔버", "Chamber", "chamber"],
+    ["웨이퍼", "Wafer", "wafer"],
+    ["로드락", "Loadlock", "loadlock", "로드락 챔버"],
+    ["Valve", "valve", "밸브", "APC Valve"],
+    ["VG12", "VG-12", "vg12"],
+    ["VG13", "VG-13", "vg13"],
+    ["ALD", "Atomic Layer Deposition", "atomic layer deposition"],
+    ["Precursor", "precursor", "전구체"],
+    ["Purge", "purge", "퍼지"],
+    ["MFC", "Mass Flow Controller", "mass flow controller", "유량 제어기"],
+    ["Flow", "flow", "유량"]
+  ],
+  "description": "동의어 그룹 정의. 같은 그룹 내 키워드는 동일하게 처리됩니다."
+}
+
+
+
+
+
