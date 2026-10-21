@@ -838,30 +838,45 @@ def debug_retrieval(query: str, retrieved):
 # 5) 쿼리 캐싱 유틸리티
 # ==============================
 
-_COMPLEX_QUERY_PATTERN = re.compile(
-    r"원인\s*(?:분석|규명|진단)|원인과.{0,12}영향|상관관계|진단|트러블슈팅|문제\s*해결|최적화|"
-    r"단계별(?:\s*(?:분석|진단|해결))?|종합\s*분석|영향\s*분석|설계\s*검토|비교\s*분석|"
-    r"다각도\s*분석|복합(?:적인)?\s*분석|root\s*cause|troubleshoot|optimi[sz]e|trade[\s-]?off",
-    re.IGNORECASE,
-)
-
-
-def classify_query_complexity(query: str) -> Tuple[bool, str]:
-    """Send explicit, demanding analysis to 7B; keep answerable factual questions lightweight."""
-    normalized = re.sub(r"\s+", " ", query).strip()
-    match = _COMPLEX_QUERY_PATTERN.search(normalized)
-    if match:
-        return True, match.group(0)
-
-    # A plain comparison (for example, "VG12와 VG13의 차이") is a small-model task.
-    # Length alone is not enough: require a long, connected request asking for analysis.
-    has_multiple_parts = re.search(
-        r"그리고|또한|아울러|뿐만 아니라|\band\b|\balso\b", normalized, re.IGNORECASE
+def _generate_with_semantic_routing(
+    messages: List[Dict[str, str]],
+    max_new_tokens: int,
+    temperature: float,
+    top_p: float,
+) -> Tuple[str, str]:
+    """Let the small model judge context answerability and answer simple questions."""
+    router_instruction = (
+        "먼저 질문과 제공된 문맥만 보고 답변 난이도를 판단하세요. "
+        "문맥의 사실을 그대로 찾거나 간단히 조합해 답할 수 있으면 SIMPLE로 분류하고, "
+        "문맥에 설명된 두 장비의 차이를 요약하는 단순 비교도 SIMPLE입니다. "
+        "원인과 결과를 여러 단계로 추론하거나, 여러 요소를 종합해 진단·최적화해야 하면 COMPLEX입니다. "
+        "단어 '차이'나 '비교'만으로 COMPLEX라고 판단하지 마세요. "
+        "출력 형식은 반드시 지키세요: 간단한 질문은 첫 줄에 SIMPLE, 다음 줄부터 문맥에 근거한 한국어 답변. "
+        "복잡한 질문은 COMPLEX 한 단어만 출력하세요. 분류 이유는 출력하지 마세요."
     )
-    asks_for_analysis = re.search(r"분석|진단|해결|최적화|영향|원인", normalized)
-    if len(normalized) >= 180 and has_multiple_parts and asks_for_analysis:
-        return True, "long_multi_part_analysis"
-    return False, "answerable_from_context"
+    routed_messages = [dict(message) for message in messages]
+    routed_messages[0]["content"] = router_instruction + "\n\n" + routed_messages[0]["content"]
+    routed_output = generate_text(
+        routed_messages,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+        top_p=top_p,
+    ).strip()
+
+    route_match = re.match(r"^(SIMPLE|COMPLEX)\b\s*", routed_output, re.IGNORECASE)
+    if route_match and route_match.group(1).upper() == "SIMPLE":
+        answer = routed_output[route_match.end():].strip()
+        if answer:
+            return answer, "simple: context answerable"
+
+    # If the route label is missing or invalid, use 7B instead of trusting a guess.
+    return generate_text(
+        messages,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        force_local_model=True,
+    ), "complex: requires deeper reasoning"
 
 def _get_cache_key(
     query: str,
@@ -1001,10 +1016,9 @@ def generate_answer(
 
     _init_models_if_needed()
     
-    # Route simple requests to the configured small model and complex requests to local 7B QLoRA.
-    is_complex, complexity_reason = classify_query_complexity(query)
-    use_local_7b = bool(LLM_BASE_URL and is_complex)
-    model_route = "local_qwen7b_qlora" if (not LLM_BASE_URL or use_local_7b) else f"endpoint:{LLM_REMOTE_MODEL}"
+    # The small model evaluates answerability from the retrieved evidence.
+    # Without a configured endpoint, generation uses local 7B QLoRA.
+    model_route = f"semantic_router:{LLM_REMOTE_MODEL}" if LLM_BASE_URL else "local_qwen7b_qlora"
     # 캐시 확인 (context_only 모드가 아니고 캐시 사용이 활성화된 경우)
     cache_key = None
     if use_cache and not context_only:
@@ -1093,20 +1107,26 @@ def generate_answer(
         {"role": "user", "content": user_prompt}
     ]
 
-    if LLM_BASE_URL and use_local_7b:
-        print(f"[LLM Router] complex -> local Qwen 7B QLoRA ({complexity_reason})")
-    elif LLM_BASE_URL:
-        print(f"[LLM Router] simple -> {LLM_REMOTE_MODEL}")
+    if LLM_BASE_URL:
+        answer, route_reason = _generate_with_semantic_routing(
+            messages,
+            max_new_tokens=max_new_tokens,
+            temperature=0.6,
+            top_p=0.9,
+        )
+        if route_reason.startswith("simple:"):
+            print(f"[LLM Router] simple -> {LLM_REMOTE_MODEL} ({route_reason})")
+        else:
+            print(f"[LLM Router] complex -> local Qwen 7B QLoRA ({route_reason})")
     else:
         print("[LLM Router] local Qwen 7B QLoRA (no small-model endpoint configured)")
-    answer = generate_text(
-        messages,
-        max_new_tokens=max_new_tokens,
-        temperature=0.6,
-        top_p=0.9,
-        force_local_model=use_local_7b,
-    )
-    
+        answer = generate_text(
+            messages,
+            max_new_tokens=max_new_tokens,
+            temperature=0.6,
+            top_p=0.9,
+            force_local_model=True,
+        )
     # 답변에 소스 인용 추가 (LLM이 추가하지 않은 경우)
     doc_ids = [item[3] for item in retrieved if len(item) == 4 and item[3] is not None]
     if doc_ids and "[참조:" not in answer and "[문서 ID:" not in answer:
