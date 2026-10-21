@@ -345,11 +345,17 @@ body {
 }
 
 .chat-layout .answer-content {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   min-height: 200px;
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.chat-layout .panel-answer {
+  display: grid;
+  grid-template-rows: auto minmax(300px, auto) auto auto;
+  align-content: start;
 }
 
 /* ============================================

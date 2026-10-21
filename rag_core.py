@@ -839,27 +839,29 @@ def debug_retrieval(query: str, retrieved):
 # ==============================
 
 _COMPLEX_QUERY_PATTERN = re.compile(
-    r"비교|차이점?|공통점|상관관계|관계 분석|이상.{0,15}(?:징후|원인|진단)|(?:징후|고장).{0,15}(?:확인|원인|진단)|원인\s*분석|원인\s*규명|진단|트러블슈팅|"
-    r"문제\s*해결|최적화|장단점|단계별|종합\s*분석|영향\s*분석|설계\s*검토|대안\s*비교|"
-    r"compare|contrast|root\s*cause|troubleshoot|optimi[sz]e|trade[\s-]?off",
+    r"원인\s*(?:분석|규명|진단)|원인과.{0,12}영향|상관관계|진단|트러블슈팅|문제\s*해결|최적화|"
+    r"단계별(?:\s*(?:분석|진단|해결))?|종합\s*분석|영향\s*분석|설계\s*검토|비교\s*분석|"
+    r"다각도\s*분석|복합(?:적인)?\s*분석|root\s*cause|troubleshoot|optimi[sz]e|trade[\s-]?off",
     re.IGNORECASE,
 )
 
 
 def classify_query_complexity(query: str) -> Tuple[bool, str]:
-    """Route explicit multi-factor analysis to 7B; keep single-concept questions lightweight."""
+    """Send explicit, demanding analysis to 7B; keep answerable factual questions lightweight."""
     normalized = re.sub(r"\s+", " ", query).strip()
     match = _COMPLEX_QUERY_PATTERN.search(normalized)
     if match:
         return True, match.group(0)
-    if normalized.count("?") + normalized.count("？") > 1:
-        return True, "multiple_questions"
-    intent_count = len(re.findall(r"무엇|뭐|왜|어떻게|어떤|원인|영향|차이", normalized))
-    if intent_count >= 3 and len(normalized) >= 80:
-        return True, "multiple_intents"
-    if len(normalized) >= 180 and re.search(r"그리고|또한|아울러|뿐만 아니라|\band\b|\balso\b", normalized, re.IGNORECASE):
-        return True, "long_multi_clause"
-    return False, "single_concept"
+
+    # A plain comparison (for example, "VG12와 VG13의 차이") is a small-model task.
+    # Length alone is not enough: require a long, connected request asking for analysis.
+    has_multiple_parts = re.search(
+        r"그리고|또한|아울러|뿐만 아니라|\band\b|\balso\b", normalized, re.IGNORECASE
+    )
+    asks_for_analysis = re.search(r"분석|진단|해결|최적화|영향|원인", normalized)
+    if len(normalized) >= 180 and has_multiple_parts and asks_for_analysis:
+        return True, "long_multi_part_analysis"
+    return False, "answerable_from_context"
 
 def _get_cache_key(
     query: str,
