@@ -194,7 +194,10 @@ CORS는 인증을 대체하지 않습니다.
 
 ### 3. 채팅 탭: 답변 완료
 
-<img width="2872" height="1798" alt="03-chat-answer png" src="https://github.com/user-attachments/assets/7104da1e-673a-4b3c-8f2c-3eec4688fe29" />
+<img width="2842" height="1800" alt="03-chat-answer" src="https://github.com/user-attachments/assets/9a90729a-dd4b-4fb1-b5d6-6cdb67f8e1e5" />
+
+<img width="2350" height="1010" alt="03-chat-answer2" src="https://github.com/user-attachments/assets/90345811-babe-4121-800e-c1fd338dd56d" />
+
 
 질문 `ALD에서 Purge는 얼마나 중요한가?`에 대한 응답 예시입니다(`qwen2.5:3b`, 로컬 CPU 추론).
 
@@ -207,7 +210,7 @@ CORS는 인증을 대체하지 않습니다.
 
 ### 4. 문서 관리 탭
 
-<img width="2880" height="1800" alt="04-docs-management png" src="https://github.com/user-attachments/assets/237786e2-3c94-496e-813c-1bde15285f30" />
+<img width="2828" height="1608" alt="04-docs-management png" src="https://github.com/user-attachments/assets/e9073860-74c0-42b1-bcae-1523d63b0ea4" />
 
 지식베이스(`docs/docs_ald.json`)를 확인하고 편집하는 탭입니다.
 
