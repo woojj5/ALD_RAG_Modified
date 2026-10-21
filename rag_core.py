@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import hashlib
+import re
 import threading
 from pathlib import Path
 from typing import List, Tuple, Dict, Any, Optional, TYPE_CHECKING
@@ -180,22 +181,57 @@ def _build_keyword_index():
 
 
 _MODEL_INIT_LOCK = threading.Lock()
+_MODELS_INITIALIZED = False
+_LOCAL_LLM_LOCK = threading.Lock()
 
 
 def _init_models_if_needed():
-    """???? ??? ??/?? ???? ? ?? ????? ??????."""
-    if DOC_EMBEDS is not None:
+    """Initialize models once and block callers until initialization completes."""
+    global _MODELS_INITIALIZED
+
+    if _MODELS_INITIALIZED:
         load_feedback_scores()
         return
 
     with _MODEL_INIT_LOCK:
-        # ?? ??? ??? ???? ??? ? ???? ?? ??? ??????.
-        if DOC_EMBEDS is not None:
+        if _MODELS_INITIALIZED:
             load_feedback_scores()
             return
         _initialize_models()
+        _MODELS_INITIALIZED = True
 
 
+
+def _load_local_llm_if_needed():
+    """Load the Qwen 7B base model and its LoRA adapter once, on demand."""
+    global LLM, TOKENIZER
+    if LLM is not None and TOKENIZER is not None:
+        return
+    with _LOCAL_LLM_LOCK:
+        if LLM is not None and TOKENIZER is not None:
+            return
+        if DEVICE is None:
+            raise RuntimeError("RAG device is not initialized")
+        if not FINETUNED_MODEL_PATH.is_dir():
+            raise FileNotFoundError(f"Fine-tuned adapter not found: {FINETUNED_MODEL_PATH}")
+        from transformers import AutoModelForCausalLM, AutoTokenizer  # type: ignore
+        print(f"[+] Loading local base model: {LLM_MODEL_NAME}")
+        tokenizer = AutoTokenizer.from_pretrained(LLM_MODEL_NAME)
+        model = AutoModelForCausalLM.from_pretrained(
+            LLM_MODEL_NAME, torch_dtype=DTYPE,
+            device_map="auto" if DEVICE.type != "cpu" else None,
+            trust_remote_code=True,
+        )
+        try:
+            from peft import PeftModel  # type: ignore
+        except ImportError as error:
+            raise RuntimeError("peft is required to load the QLoRA adapter") from error
+        print(f"[+] Loading QLoRA adapter: {FINETUNED_MODEL_PATH}")
+        model = PeftModel.from_pretrained(model, FINETUNED_MODEL_PATH)
+        model.eval()
+        TOKENIZER = tokenizer
+        LLM = model
+        print(f"[+] Local Qwen 7B QLoRA model ready (device={DEVICE})")
 def _initialize_models():
     global DOCS, DOC_KEYWORDS, DOC_ITEMS, DOC_EMBEDS
     global SEMB_MODEL, TOKENIZER, LLM, DEVICE, DTYPE, MODEL_INFO
@@ -203,11 +239,6 @@ def _initialize_models():
 
     import torch  # type: ignore
     from sentence_transformers import SentenceTransformer  # type: ignore
-
-    if DOC_EMBEDS is not None:
-        # 문서는 이미 로드되었지만 피드백 점수는 다시 로드 (최신 상태 유지)
-        load_feedback_scores()
-        return  # 이미 초기화되었음
 
     # 동의어 로딩
     load_synonyms()
@@ -253,36 +284,15 @@ def _initialize_models():
     if LLM_BASE_URL:
         TOKENIZER = None
         LLM = None
-        print(f"[+] OpenAI-compatible LLM endpoint configured: {LLM_BASE_URL}")
+        print(f"[+] Small-model endpoint configured: {LLM_BASE_URL}")
     else:
-        from transformers import AutoModelForCausalLM, AutoTokenizer  # type: ignore
-
-        print(f"[+] 모델 로딩 중: {LLM_MODEL_NAME}")
-        TOKENIZER = AutoTokenizer.from_pretrained(LLM_MODEL_NAME)
-        LLM = AutoModelForCausalLM.from_pretrained(
-            LLM_MODEL_NAME,
-            torch_dtype=DTYPE,
-            device_map="auto" if DEVICE.type != "cpu" else None,
-            trust_remote_code=True,
-        )
-
-        if FINETUNED_MODEL_PATH is not None and Path(FINETUNED_MODEL_PATH).exists():
-            try:
-                from peft import PeftModel  # type: ignore
-            except ImportError:
-                print("[!] peft 라이브러리가 없어 fine-tuned 모델을 로드할 수 없습니다.")
-            else:
-                print(f"[+] Fine-tuned LoRA 어댑터 로딩 중: {FINETUNED_MODEL_PATH}")
-                LLM = PeftModel.from_pretrained(LLM, FINETUNED_MODEL_PATH)
-
-        print(f"[+] 모델 로딩 완료 (device={DEVICE})")
-
+        _load_local_llm_if_needed()
     MODEL_INFO.update({
         "num_docs": len(DOCS),
         "keywords": sorted(list(set(DOC_KEYWORDS))),
         "embed_model": EMBED_MODEL_NAME,
-        "llm_model": LLM_REMOTE_MODEL if LLM_BASE_URL else LLM_MODEL_NAME,
-        "llm_backend": "openai_compatible" if LLM_BASE_URL else "local_transformers",
+        "llm_model": f"{LLM_REMOTE_MODEL} + {LLM_MODEL_NAME} QLoRA" if LLM_BASE_URL else f"{LLM_MODEL_NAME} QLoRA",
+        "llm_backend": "complexity_router" if LLM_BASE_URL else "local_transformers",
         "device": str(DEVICE),
     })
 
@@ -828,16 +838,40 @@ def debug_retrieval(query: str, retrieved):
 # 5) 쿼리 캐싱 유틸리티
 # ==============================
 
+_COMPLEX_QUERY_PATTERN = re.compile(
+    r"비교|차이점?|공통점|상관관계|관계 분석|이상.{0,15}(?:징후|원인|진단)|(?:징후|고장).{0,15}(?:확인|원인|진단)|원인\s*분석|원인\s*규명|진단|트러블슈팅|"
+    r"문제\s*해결|최적화|장단점|단계별|종합\s*분석|영향\s*분석|설계\s*검토|대안\s*비교|"
+    r"compare|contrast|root\s*cause|troubleshoot|optimi[sz]e|trade[\s-]?off",
+    re.IGNORECASE,
+)
+
+
+def classify_query_complexity(query: str) -> Tuple[bool, str]:
+    """Route explicit multi-factor analysis to 7B; keep single-concept questions lightweight."""
+    normalized = re.sub(r"\s+", " ", query).strip()
+    match = _COMPLEX_QUERY_PATTERN.search(normalized)
+    if match:
+        return True, match.group(0)
+    if normalized.count("?") + normalized.count("？") > 1:
+        return True, "multiple_questions"
+    intent_count = len(re.findall(r"무엇|뭐|왜|어떻게|어떤|원인|영향|차이", normalized))
+    if intent_count >= 3 and len(normalized) >= 80:
+        return True, "multiple_intents"
+    if len(normalized) >= 180 and re.search(r"그리고|또한|아울러|뿐만 아니라|\band\b|\balso\b", normalized, re.IGNORECASE):
+        return True, "long_multi_clause"
+    return False, "single_concept"
+
 def _get_cache_key(
     query: str,
     top_k: int,
     filter_keyword: Optional[str],
     max_new_tokens: int,
+    model_route: str = "default",
 ) -> str:
     """Build a cache key that includes every setting affecting the generated answer."""
     key_str = (
         f"{query}|{top_k}|{filter_keyword or ''}|{max_new_tokens}|"
-        f"{LLM_REMOTE_MODEL if LLM_BASE_URL else LLM_MODEL_NAME}"
+        f"{LLM_BASE_URL}|{LLM_REMOTE_MODEL if LLM_BASE_URL else LLM_MODEL_NAME}|{model_route}"
     )
     return hashlib.sha256(key_str.encode("utf-8")).hexdigest()
 
@@ -965,10 +999,14 @@ def generate_answer(
 
     _init_models_if_needed()
     
+    # Route simple requests to the configured small model and complex requests to local 7B QLoRA.
+    is_complex, complexity_reason = classify_query_complexity(query)
+    use_local_7b = bool(LLM_BASE_URL and is_complex)
+    model_route = "local_qwen7b_qlora" if (not LLM_BASE_URL or use_local_7b) else f"endpoint:{LLM_REMOTE_MODEL}"
     # 캐시 확인 (context_only 모드가 아니고 캐시 사용이 활성화된 경우)
     cache_key = None
     if use_cache and not context_only:
-        cache_key = _get_cache_key(query, top_k, filter_keyword, max_new_tokens)
+        cache_key = _get_cache_key(query, top_k, filter_keyword, max_new_tokens, model_route)
         cached_result = _get_from_cache(cache_key)
         if cached_result is not None:
             if len(cached_result) == 4:
@@ -1053,11 +1091,18 @@ def generate_answer(
         {"role": "user", "content": user_prompt}
     ]
 
+    if LLM_BASE_URL and use_local_7b:
+        print(f"[LLM Router] complex -> local Qwen 7B QLoRA ({complexity_reason})")
+    elif LLM_BASE_URL:
+        print(f"[LLM Router] simple -> {LLM_REMOTE_MODEL}")
+    else:
+        print("[LLM Router] local Qwen 7B QLoRA (no small-model endpoint configured)")
     answer = generate_text(
         messages,
         max_new_tokens=max_new_tokens,
         temperature=0.6,
         top_p=0.9,
+        force_local_model=use_local_7b,
     )
     
     # 답변에 소스 인용 추가 (LLM이 추가하지 않은 경우)
@@ -1084,22 +1129,26 @@ def generate_text(
     max_new_tokens: int = 256,
     temperature: float = 0.6,
     top_p: float = 0.9,
+    force_local_model: bool = False,
 ) -> str:
     """Generate through a configured OpenAI-compatible server or the local dev model."""
-    if LLM_BASE_URL:
+    if LLM_BASE_URL and not force_local_model:
         import httpx  # type: ignore
 
         headers = {"Authorization": f"Bearer {LLM_API_KEY}"} if LLM_API_KEY else {}
+        payload = {
+            "model": LLM_REMOTE_MODEL,
+            "messages": messages,
+            "max_tokens": max_new_tokens,
+            "temperature": temperature,
+            "top_p": top_p,
+        }
+        if "127.0.0.1:11434" in LLM_BASE_URL or "localhost:11434" in LLM_BASE_URL:
+            payload["keep_alive"] = 0
         response = httpx.post(
             f"{LLM_BASE_URL}/chat/completions",
             headers=headers,
-            json={
-                "model": LLM_REMOTE_MODEL,
-                "messages": messages,
-                "max_tokens": max_new_tokens,
-                "temperature": temperature,
-                "top_p": top_p,
-            },
+            json=payload,
             timeout=LLM_REQUEST_TIMEOUT,
         )
         response.raise_for_status()
@@ -1113,6 +1162,7 @@ def generate_text(
         return content.strip()
 
     _init_models_if_needed()
+    _load_local_llm_if_needed()
     if LLM is None or TOKENIZER is None:
         raise RuntimeError("Local LLM was not initialized")
 
